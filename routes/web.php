@@ -14,11 +14,21 @@ Route::prefix('admin')->group(function () {
     Route::prefix('category')->group(function () {
         Route::get('index', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('category.index');
         Route::get('add', [\App\Http\Controllers\Admin\CategoryController::class, 'add'])->name('category.add');
+        Route::get('edit/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('category.edit');
+        Route::get('delete/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'delete'])->name('category.delete');
         Route::post('store', [\App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('category.store');
+        Route::post('update/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('category.update');
+        Route::get('update-status/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'updateStatus'])->name('category.update.status');
     });
 
     Route::prefix('product')->group(function () {
         Route::get('index', [\App\Http\Controllers\Admin\ProductController::class, 'index'])->name('product.index');
+        Route::get('add', [\App\Http\Controllers\Admin\ProductController::class, 'add'])->name('product.add');
+        Route::get('edit/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'edit'])->name('product.edit');
+        Route::get('delete/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'delete'])->name('product.delete');
+        Route::post('store', [\App\Http\Controllers\Admin\ProductController::class, 'store'])->name('product.store');
+        Route::post('update/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'update'])->name('product.update');
+        Route::get('update-status/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'updateStatus'])->name('product.update.status');
     });
 
     Route::prefix('user')->group(function () {

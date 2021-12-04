@@ -29,3 +29,23 @@ function ChangeToSlug()
         //In slug ra textbox có id “slug”
     document.getElementById('convert_slug').value = slug;
 }
+
+
+let review_img = function(event){
+    let img = document.getElementById('review-img');
+    img.src = URL.createObjectURL(event.target.files[0]);
+    img.onload = function(){
+        URL.revokeObjectURL(img.src);
+    }
+}
+$(document).ready(function(){
+    $('#review-img').click(function(){
+        $('#input_file_img').click();
+    })
+})
+function isNumberKey(event){
+    var charCode =(event.which) ? event.which : event.keyCode
+    if(charCode >31 &&(charCode <48 || charCode >57))
+        return false;
+    return true;
+}

@@ -31,12 +31,15 @@
 <script src="/for_admin/js/vendor.js"></script>
 <script src="/for_admin/js/app.js"></script>
 <script src="/for_admin/js/script.js"></script>
+<script src="/for_admin/js/sweetalert2.min.js"></script>
 <script>
         {{--active menu--}}
 		$(".main-menu li a").filter(function(){
 			return this.href == location.href;
 		}).parents("li").addClass("active");
 </script>
+{{--    Nhận js từ @push('js')--}}
+@stack('js')
 </body>
 
 </html>

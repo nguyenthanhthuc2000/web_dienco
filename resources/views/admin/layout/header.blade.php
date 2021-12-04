@@ -16,6 +16,7 @@
 
     <link href="/for_admin/css/app.css" rel="stylesheet">
     <link href="/for_admin/css/style.css" rel="stylesheet">
+    <link href="/for_admin/css/sweetalert2.min.css" rel="stylesheet">
 </head>
 
 <body>

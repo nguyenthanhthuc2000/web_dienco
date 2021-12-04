@@ -9,3 +9,9 @@
 .alert__session .alert{
     padding: .95rem!important;
 }
+.review-img img {
+    width: 100%;
+}
+.img{
+    object-fit: cover;
+}
