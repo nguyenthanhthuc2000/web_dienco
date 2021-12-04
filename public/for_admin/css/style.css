@@ -1,0 +1,11 @@
+.header-page{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn__add__href{
+    color:#fff!important;
+}
+.alert__session .alert{
+    padding: .95rem!important;
+}
