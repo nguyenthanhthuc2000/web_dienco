@@ -35,5 +35,9 @@ class AppServiceProvider extends ServiceProvider
             \App\Repository\Discount\DiscountCodeRepositoryInterface::class,
             \App\Repository\Discount\DiscountCodeRepository::class
         );
+        $this->app->singleton(
+            \App\Repository\User\UserRepositoryInterface::class,
+            \App\Repository\User\UserRepository::class
+        );
     }
 }

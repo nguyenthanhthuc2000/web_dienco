@@ -5,9 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Repository\User\UserRepositoryInterface;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
+    protected $userRepo;
+    public function __construct(
+        UserRepositoryInterface $userRepo
+    )
+    {
+        $this->userRepo = $userRepo;
+    }
+
     public function index(){
         return view('admin.index');
     }
@@ -26,6 +36,40 @@ class AdminController extends Controller
 
         return redirect()->route('admin.login');
     }
+
+    public function postChangePassword(Request $request){
+        $this->validate($request,
+            [
+                'password' => ['required'],
+                'newpassword' => ['required'],
+                'confirmpassword' => ['required','same:newpassword'],
+            ],
+            [
+                'password.required' => 'Vui lòng nhập mật khẩu',
+                'newpassword.required' =>  'Vui lòng nhập mật khẩu mới',
+                'confirmpassword.required' => 'Vui lòng nhập mật khẩu xác nhận',
+                'confirmpassword.same' => 'Mật khẩu xác nhận không đúng'
+            ],
+        );
+
+        if (Hash::check($request->password, Auth::user()->password))
+        {
+            $arr = array(
+                'password' => Hash::make($request->newpassword)
+            );
+            $update = $this->userRepo->update(Auth::id(), $arr);
+            if($update){
+                return back()->with('success', 'Đổi mật khẩu thành công!');
+            }
+            return back()->with('error', 'Lỗi, vui lòng thử lại!');
+        }
+        return back()->with('error', 'Sai mật khẩu hiện tại!');
+
+
+
+
+    }
+
 
     public function postLogin(Request $request){
 
@@ -50,6 +94,6 @@ class AdminController extends Controller
     }
 
     public function changePassword(){
-
+        return view('admin.change_password');
     }
 }
