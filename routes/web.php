@@ -37,6 +37,13 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('user')->group(function () {
             Route::get('index', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('user.index');
+            Route::get('add', [\App\Http\Controllers\Admin\UserController::class, 'add'])->name('user.add');
+            Route::get('edit/{id}', [\App\Http\Controllers\Admin\UserController::class, 'edit'])->name('user.edit');
+            Route::get('delete/{id}', [\App\Http\Controllers\Admin\UserController::class, 'delete'])->name('user.delete');
+            Route::get('reset-password/{id}', [\App\Http\Controllers\Admin\UserController::class, 'resetPassword'])->name('user.reset.password');
+            Route::post('store', [\App\Http\Controllers\Admin\UserController::class, 'store'])->name('user.store');
+            Route::post('update/{id}', [\App\Http\Controllers\Admin\UserController::class, 'update'])->name('user.update');
+            Route::get('update-status/{id}', [\App\Http\Controllers\Admin\UserController::class, 'updateStatus'])->name('user.update.status');
         });
 
         Route::prefix('order')->group(function () {
