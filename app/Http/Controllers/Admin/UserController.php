@@ -32,7 +32,16 @@ class UserController extends Controller
     public function resetPassword($id){
 
         $newPassword = substr(md5(microtime()),rand(0,5), 6);
-        dd($newPassword);
+        $user = $this->userRepo->find($id);
+        $array = [
+            'password' => Hash::make($newPassword),
+        ];
+        //neu cập nhật thanh cong quay ve trang danh sách
+        if($this->userRepo->update($id, $array)){ // goi đến catRepo ở function construct (app/Repository/BaseRepository/ function update)
+            return redirect()->route('user.index')->with('success', 'Cập nhật mật khẩu mới cho tài khoản'.$user->email.' là: '.$newPassword);
+        }
+        //neu that bai quay ve trang danh sách
+        return redirect()->route('user.index')->with('error', 'Cập nhật thất bại!');
     }
 
     public function store(Request $request)
