@@ -21,7 +21,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @if($cats->count() > 1)
+                    @if($cats->count() > 0)
                         @foreach($cats as $cat)
                             <tr>
                                 <td>{{ $cat->name }}</td>

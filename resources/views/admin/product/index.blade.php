@@ -23,7 +23,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @if($products->count() > 1)
+                @if($products->count() > 0)
                     @foreach($products as $product)
                         <tr>
                             <td>

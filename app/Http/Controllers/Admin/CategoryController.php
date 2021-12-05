@@ -100,8 +100,8 @@ class CategoryController extends Controller
         return redirect()->route('category.index')->with('error', 'Xóa thất bại!');
     }
 
-    public function updateStatus(Request $request, $id){
-        $statusCat =  $this->catRepo->find($request->id)->status; //lấy status hiện tại
+    public function updateStatus($id){
+        $statusCat =  $this->catRepo->find($id)->status; //lấy status hiện tại
         $status = 1;
         if($statusCat == 1){
             $status = 0;

@@ -1,9 +1,10 @@
 @extends('admin.layout.main')
 @section('content')
+    @include('admin.layout.alert')
     <div class="header-page">
         <h1 class="h3 mb-3">Danh sách mã giảm giá</h1>
         <div class="list-btn">
-            <a class="btn btn-primary btn__add__href" href=""><i class="fas fa-plus"></i> &nbsp;Thêm mới</a>
+            <a class="btn btn-primary btn__add__href" href="{{ route('code.add') }}"><i class="fas fa-plus"></i> &nbsp;Thêm mới</a>
         </div>
     </div>
     <br>
@@ -12,59 +13,60 @@
             <div class="card">
                 <table class="table">
                     <thead>
-                    <tr>
-                        <th style="width:40%;">Name</th>
-                        <th style="width:25%">Phone Number</th>
-                        <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th>
-                        <th>Actions</th>
-                    </tr>
+                        <tr>
+                            <th>Tên</th>
+                            <th>Code</th>
+                            <th>Số lượng</th>
+                            <th>Đã dùng</th>
+                            <th>Hình thức giảm</th>
+                            <th>Giảm</th>
+                            <th>Ngày bắt đầu</th>
+                            <th>Ngày kết thúc</th>
+                            <th>Trạng thái</th>
+                            <th class="text-right">Thao tác</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Vanessa Tucker</td>
-                        <td>864-348-0485</td>
-                        <td class="d-none d-md-table-cell">June 21, 1961</td>
-                        <td class="table-action">
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>William Harris</td>
-                        <td>914-939-2458</td>
-                        <td class="d-none d-md-table-cell">May 15, 1948</td>
-                        <td class="table-action">
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Sharon Lessman</td>
-                        <td>704-993-5435</td>
-                        <td class="d-none d-md-table-cell">September 14, 1965</td>
-                        <td class="table-action">
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Christina Mason</td>
-                        <td>765-382-8195</td>
-                        <td class="d-none d-md-table-cell">April 2, 1971</td>
-                        <td class="table-action">
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Robin Schneiders</td>
-                        <td>202-672-1407</td>
-                        <td class="d-none d-md-table-cell">October 12, 1966</td>
-                        <td class="table-action">
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>
-                            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a>
-                        </td>
-                    </tr>
+
+                    @if($codes->count() > 0)
+                        @foreach($codes as $code)
+                            <tr>
+                                <td>{{$code->name}}</td>
+                                <td>{{$code->code}}</td>
+                                <td>{{$code->total}}</td>
+                                <td>{{$code->used}}</td>
+                                <td>
+                                    @if($code->type == 1)
+                                        Phần trăm
+                                    @else
+                                        Số tiền
+                                    @endif
+                                </td>
+                                <td>{{$code->number}}</td>
+                                <td>{{$code->date_end}}</td>
+                                <td>{{$code->date_start}}</td>
+                                <td>
+                                    @if($code->status == 1)
+                                        <a class="btn btn-success" href="{{ route('code.update.status', $code->id) }}">Hoạt động</a>
+                                    @else
+                                        <a class="btn btn-danger" href="{{ route('code.update.status', $code->id) }}">Ngừng</a>
+                                    @endif
+                                </td>
+                                <td class="text-right">
+                                    <a class="btn btn-primary btn__add__href" href="{{ route('code.edit', $code->id) }}">Sửa</a> &nbsp;
+                                    <button class="btn btn-warning btn__add__href btn-delete" type="button"
+                                            data-href="{{ route('code.delete', $code->id) }}">Xóa
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
+                        @else
+                            <tr>
+                                <td colspan="4">
+                                    <strong> Không có dữ liệu</strong>
+                                </td>
+                            </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -72,3 +74,24 @@
     </div>
 @endsection
 
+@push('js')
+    <script>
+        $('.btn-delete').click(function(){
+            var url = $(this).data('href');
+            Swal.fire({
+              title: 'Bạn có chắc chắn xóa?',
+              text: "Sau khi xóa không thể khôi phục!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Xóa ngay',
+              cancelButtonText: 'Hủy'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                   window.location.href = url;
+              }
+            })
+        })
+    </script>
+@endpush

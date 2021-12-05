@@ -11,6 +11,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.index');
 
+    //danh muc san pham
     Route::prefix('category')->group(function () {
         Route::get('index', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('category.index');
         Route::get('add', [\App\Http\Controllers\Admin\CategoryController::class, 'add'])->name('category.add');
@@ -21,6 +22,7 @@ Route::prefix('admin')->group(function () {
         Route::get('update-status/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'updateStatus'])->name('category.update.status');
     });
 
+    // san pham
     Route::prefix('product')->group(function () {
         Route::get('index', [\App\Http\Controllers\Admin\ProductController::class, 'index'])->name('product.index');
         Route::get('add', [\App\Http\Controllers\Admin\ProductController::class, 'add'])->name('product.add');
@@ -39,8 +41,15 @@ Route::prefix('admin')->group(function () {
         Route::get('index', [\App\Http\Controllers\Admin\OrderController::class, 'index'])->name('order.index');
     });
 
+    //ma giam gia
     Route::prefix('code')->group(function () {
-        Route::get('index', [\App\Http\Controllers\Admin\CodeController::class, 'index'])->name('code.index');
+        Route::get('index', [\App\Http\Controllers\Admin\DiscountCodeController::class, 'index'])->name('code.index');
+        Route::get('add', [\App\Http\Controllers\Admin\DiscountCodeController::class, 'add'])->name('code.add');
+        Route::get('edit/{id}', [\App\Http\Controllers\Admin\DiscountCodeController::class, 'edit'])->name('code.edit');
+        Route::get('delete/{id}', [\App\Http\Controllers\Admin\DiscountCodeController::class, 'delete'])->name('code.delete');
+        Route::post('store', [\App\Http\Controllers\Admin\DiscountCodeController::class, 'store'])->name('code.store');
+        Route::post('update/{id}', [\App\Http\Controllers\Admin\DiscountCodeController::class, 'update'])->name('code.update');
+        Route::get('update-status/{id}', [\App\Http\Controllers\Admin\DiscountCodeController::class, 'updateStatus'])->name('code.update.status');
     });
 
 

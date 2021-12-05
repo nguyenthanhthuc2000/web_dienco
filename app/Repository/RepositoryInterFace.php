@@ -11,6 +11,11 @@ interface RepositoryInterface
     public function getAll();
 
     /**
+     * @return mixed
+     */
+    public function getAllItem();
+
+    /**
      * Get one
      * @param $id
      * @return mixed
