@@ -35,7 +35,7 @@ class UserController extends Controller
 
     public function index(){
 
-        $users = $this->userRepo->getAll()->whereNotIn('id', [1]);
+        $users = $this->userRepo->getAll();
         return view('admin.user.index', compact('users'));
     }
 

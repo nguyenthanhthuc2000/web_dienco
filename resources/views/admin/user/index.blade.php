@@ -24,8 +24,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @if($users->count() > 0)
+                    @if($users->count() > 1)
                             @foreach($users as $user)
+                                @if($user->id > 1)
                                 <tr>
                                     <td>
                                         {{$user->name}}
@@ -50,6 +51,7 @@
                                         </button>
                                     </td>
                                 </tr>
+                                @endif
                             @endforeach
                         @else
                             <tr>
@@ -60,6 +62,13 @@
                         @endif
                     </tbody>
                 </table>
+                @if($users->count() > 1)
+                <div class="float-right" style="    display: flex;
+                    justify-content: end;
+                    padding-top: 15px;">
+                    {{ $users->links() }}
+                </div>
+                @endif
             </div>
         </div>
     </div>

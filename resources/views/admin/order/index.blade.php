@@ -53,6 +53,11 @@
                     @endif
                     </tbody>
                 </table>
+                <div class="float-right" style="    display: flex;
+    justify-content: end;
+    padding-top: 15px;">
+                    {{ $orders->links() }}
+                </div>
             </div>
         </div>
     </div>
