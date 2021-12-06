@@ -64,5 +64,6 @@ Route::prefix('admin')->group(function () {
             Route::get('update-status/{id}', [\App\Http\Controllers\Admin\DiscountCodeController::class, 'updateStatus'])->name('code.update.status')->middleware(CheckRole::class);
         });
     });
-
 });
+
+Route::get('/index', [\App\Http\Controllers\Users\HomeController::class, 'index'])->name('users.index');

@@ -5,5 +5,5 @@ use App\Repository\RepositoryInterface;
 
 interface CategoryRepositoryInterface extends RepositoryInterface
 {
-
+    
 }

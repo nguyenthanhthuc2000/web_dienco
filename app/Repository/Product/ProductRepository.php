@@ -11,4 +11,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         return \App\Models\Product::class;
     }
 
+    public function getMinPriceByCategory($category){
+        return $this->model->where('category', $category)->orderBy('price', 'DESC')->first();
+    }
 }
