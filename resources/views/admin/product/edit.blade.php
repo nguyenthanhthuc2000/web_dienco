@@ -3,7 +3,7 @@
     <form  method="post" action="{{ route('product.update', $product->id) }}" enctype="multipart/form-data">
         @csrf
         <div class="header-page">
-            <h1 class="h3 mb-3">Thêm sản phẩm</h1>
+            <h1 class="h3 mb-3">Chỉnh sửa sản phẩm</h1>
             <div class="list-btn">
                 <button type="submit" class="btn btn-primary">Lưu</button>
             </div>

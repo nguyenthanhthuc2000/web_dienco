@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Repository\Product\ProductRepositoryInterface;
 use App\Repository\Category\CategoryRepositoryInterface;
 use App\Repository\OrderDetail\OrderDetailRepositoryInterface;
+use App\Repository\ActivityHistory\ActivityHistoryRepositoryInterface;
 
 use File; // them vao để thao  tác với file
 
@@ -17,16 +19,19 @@ class ProductController extends Controller
     protected $proRepo;
     protected $catRepo;
     protected $orderDetailRepo;
+    protected $activityHistoryRepo;
 
     public function __construct(
         ProductRepositoryInterface $proRepo,
         CategoryRepositoryInterface $catRepo,
-        OrderDetailRepositoryInterface $orderDetailRepo
+        OrderDetailRepositoryInterface $orderDetailRepo,
+        ActivityHistoryRepositoryInterface $activityHistoryRepo
     )
     {
         $this->proRepo = $proRepo;
         $this->catRepo = $catRepo;
         $this->orderDetailRepo = $orderDetailRepo;
+        $this->activityHistoryRepo = $activityHistoryRepo;
     }
 
     public function store(Request $request){
@@ -65,7 +70,13 @@ class ProductController extends Controller
         }
 
         //neu luu thanh cong quay ve trang danh sách
-        if($this->proRepo->create($array)){ // goi đến catRepo ở function construct (app/Repository/BaseRepository/ function create)
+        $insert = $this->proRepo->create($array);
+        if($insert){ // goi đến catRepo ở function construct (app/Repository/BaseRepository/ function create)
+            $arrayHistory = [
+                'user_id' => Auth::id(),
+                'action' => 'Thêm mới sản phẩm ID: '.$insert->id
+            ];
+            $this->activityHistoryRepo->create($arrayHistory);
             return redirect()->route('product.index')->with('success', 'Thêm thành công!');
         }
         //neu that bai quay ve trang danh sách
@@ -88,15 +99,23 @@ class ProductController extends Controller
 
     public function updateStatus(Request $request, $id){
         $statusPro =  $this->proRepo->find($request->id)->status; //lấy status hiện tại
+        $mes = 'hoạt động';
         $status = 1;
         if($statusPro == 1){
             $status = 0;
+            $mes = 'ngừng hoạt động';
         }
         $array = [
             'status' => $status
         ];
+
         //neu cập nhật thanh cong quay ve trang danh sách
         if($this->proRepo->update($id, $array)){ // goi đến catRepo ở function construct (app/Repository/BaseRepository/ function update)
+            $arrayHistory = [
+                'user_id' => Auth::id(),
+                'action' => 'Cập nhật trạng thái sản phẩm ID: '.$id.' thành '.$mes
+            ];
+            $this->activityHistoryRepo->create($arrayHistory);
             return redirect()->route('product.index')->with('success', 'Cập nhật thành công!');
         }
         //neu that bai quay ve trang danh sách
@@ -106,7 +125,7 @@ class ProductController extends Controller
 
     public function delete($id){
         $attributes = [
-            'id_product' => $id
+            'product_id' => $id
         ];
         $orderDetails = $this->orderDetailRepo->getByAttributesAll($attributes);
         $products = $this->proRepo->find($id);
@@ -169,6 +188,11 @@ class ProductController extends Controller
 
         //neu luu thanh cong quay ve trang danh sách
         if($this->proRepo->update($id, $array)){ // goi đến catRepo ở function construct (app/Repository/BaseRepository/ function create)
+            $arrayHistory = [
+                'user_id' => Auth::id(),
+                'action' => 'Chỉnh sửa thông tin sản phẩm ID: '.$id
+            ];
+            $this->activityHistoryRepo->create($arrayHistory);
             return redirect()->route('product.index')->with('success', 'Cập nhật thành công!');
         }
         //neu that bai quay ve trang danh sách

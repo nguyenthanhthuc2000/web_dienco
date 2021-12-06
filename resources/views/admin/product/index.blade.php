@@ -45,7 +45,7 @@
                                 @endif
                             </td>
                             <td class="text-right" >
-                                <a class="btn btn-primary btn__add__href" href="{{ route('product.edit', $product->id) }}">Sửa</a> &nbsp;
+                                <a class="btn btn-primary btn__add__href" href="{{ route('product.edit', $product->id) }}">Sửa</a>
                                 @if(Auth::user()->level == 1)
                                 <button class="btn btn-warning btn__add__href btn-delete" type="button"
                                         data-href="{{ route('product.delete', $product->id) }}">Xóa

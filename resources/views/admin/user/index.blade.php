@@ -17,8 +17,8 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Ngày tạo</th>
+                        <th>Hoạt động</th>
                         <th>Trạng thái</th>
-                        <th class="text-center">Đặt lại mật khẩu</th>
                         <th class="text-right">Thao tác</th>
 
                     </tr>
@@ -33,17 +33,18 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->created_at}}</td>
                                     <td>
+                                        <a class="btn btn-dark" href="{{ route('history.detail', $user->id) }}">Xem chi tiết</a>
+                                    </td>
+                                    <td>
                                         @if($user->status == 1)
                                             <a class="btn btn-success" href="{{ route('user.update.status', $user->id) }}">Hoạt động</a>
                                         @else
                                             <a class="btn btn-danger" href="{{ route('user.update.status', $user->id) }}">Không hoạt động</a>
                                         @endif
                                     </td>
-                                    <td class="text-center">
-                                        <a class="btn btn-info btn__add__href" href="{{ route('user.reset.password', $user->id) }}">Đặt lại</a>
-                                    </td>
                                     <td class="text-right">
-                                        <a class="btn btn-primary btn__add__href" href="{{ route('user.edit', $user->id) }}">Sửa</a> &nbsp;
+                                        <a class="btn btn-info btn__add__href" href="{{ route('user.reset.password', $user->id) }}">Đặt lại mật khẩu</a>
+                                        <a class="btn btn-primary btn__add__href" href="{{ route('user.edit', $user->id) }}">Sửa</a>
                                         <button class="btn btn-warning btn__add__href btn-delete" type="button"
                                                 data-href="{{ route('user.delete', $user->id) }}">Xóa
                                         </button>

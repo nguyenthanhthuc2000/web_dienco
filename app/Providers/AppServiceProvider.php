@@ -47,5 +47,9 @@ class AppServiceProvider extends ServiceProvider
             \App\Repository\OrderDetail\OrderDetailRepositoryInterface::class,
             \App\Repository\OrderDetail\OrderDetailRepository::class
         );
+        $this->app->singleton(
+            \App\Repository\ActivityHistory\ActivityHistoryRepositoryInterface::class,
+            \App\Repository\ActivityHistory\ActivityHistoryRepository::class
+        );
     }
 }

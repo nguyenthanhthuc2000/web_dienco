@@ -16,18 +16,18 @@
                 </a>
             </li>
 
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('category.index') }}">
-                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Danh mục</span>
-                </a>
-            </li>
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('product.index') }}">
                     <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Sản phẩm</span>
                 </a>
             </li>
-        @if(Auth::user()->level == 1)
+            @if(Auth::user()->level == 1)
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('category.index') }}">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Danh mục</span>
+                </a>
+            </li>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('code.index') }}">
                     <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Mã giảm giá</span>
@@ -45,8 +45,8 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="#">
-                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Lịch sử</span>
+                <a class="sidebar-link" href="{{ route('history.index') }}">
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Lịch sử hoạt động</span>
                 </a>
             </li>
             @endif

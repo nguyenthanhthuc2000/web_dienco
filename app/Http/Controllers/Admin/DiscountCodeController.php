@@ -94,7 +94,7 @@ class DiscountCodeController extends Controller
 
     public function delete($id){
         $attributes = [
-            'id_discount_code' => $id
+            'discount_code_id' => $id
         ];
         $orderDetails = $this->orderDetailRepo->getByAttributesAll($attributes);
         $code = $this->discountCodeRepo->find($id);

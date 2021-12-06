@@ -2,7 +2,7 @@
 @section('content')
     @include('admin.layout.alert')
     <div class="header-page">
-        <h1 class="h3 mb-3">Lịch sử hoạt động của {{$user->name}}</h1>
+        <h1 class="h3 mb-3">Lịch sử hoạt động</h1>
         <div class="list-btn">
         </div>
     </div>
@@ -13,6 +13,8 @@
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
+                        <th>Tên</th>
+                        <th>Email</th>
                         <th>Nội dung</th>
                         <th>Ngày tạo</th>
                     </tr>
@@ -21,6 +23,12 @@
                     @if($historys->count() > 0)
                         @foreach($historys as $history)
                             <tr>
+                                <td>
+                                    {{$history->user->name}}
+                                </td>
+                                <td>
+                                    {{$history->user->email}}
+                                </td>
                                 <td>
                                     {{$history->action}}
                                 </td>
@@ -42,23 +50,4 @@
 @endsection
 
 @push('js')
-    <script>
-        $('.btn-delete').click(function(){
-            var url = $(this).data('href');
-            Swal.fire({
-              title: 'Bạn có chắc chắn xóa?',
-              text: "Sau khi xóa không thể khôi phục!",
-              icon: 'warning',
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Xóa ngay',
-              cancelButtonText: 'Hủy'
-            }).then((result) => {
-              if (result.isConfirmed) {
-                   window.location.href = url;
-              }
-            })
-        })
-    </script>
 @endpush
