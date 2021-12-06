@@ -15,13 +15,13 @@ Route::prefix('admin')->group(function () {
 
         //danh muc san pham
         Route::prefix('category')->group(function () {
-            Route::get('index', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('category.index');
-            Route::get('add', [\App\Http\Controllers\Admin\CategoryController::class, 'add'])->name('category.add');
-            Route::get('edit/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('category.edit');
+            Route::get('index', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('category.index')->middleware(CheckRole::class);
+            Route::get('add', [\App\Http\Controllers\Admin\CategoryController::class, 'add'])->name('category.add')->middleware(CheckRole::class);
+            Route::get('edit/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('category.edit')->middleware(CheckRole::class);
             Route::get('delete/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'delete'])->name('category.delete')->middleware(CheckRole::class);
-            Route::post('store', [\App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('category.store');
-            Route::post('update/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('category.update');
-            Route::get('update-status/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'updateStatus'])->name('category.update.status');
+            Route::post('store', [\App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('category.store')->middleware(CheckRole::class);
+            Route::post('update/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('category.update')->middleware(CheckRole::class);
+            Route::get('update-status/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'updateStatus'])->name('category.update.status')->middleware(CheckRole::class);
         });
 
         // san pham
@@ -46,10 +46,16 @@ Route::prefix('admin')->group(function () {
             Route::get('update-status/{id}', [\App\Http\Controllers\Admin\UserController::class, 'updateStatus'])->name('user.update.status')->middleware(CheckRole::class);
         });
 
+        Route::prefix('activity-history')->group(function () {
+            Route::get('index', [\App\Http\Controllers\Admin\ActivityHistory::class, 'index'])->name('history.index')->middleware(CheckRole::class);
+
+            Route::get('detail/{id}', [\App\Http\Controllers\Admin\ActivityHistory::class, 'detail'])->name('history.detail')->middleware(CheckRole::class);
+        });
+
         Route::prefix('order')->group(function () {
             Route::get('index', [\App\Http\Controllers\Admin\OrderController::class, 'index'])->name('order.index');
             Route::get('detail/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'detail'])->name('order.detail');
-            Route::get('delete/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'delete'])->name('order.delete');
+            Route::get('delete/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'delete'])->name('order.delete')->middleware(CheckRole::class);
             Route::get('update-status/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'updateStatus'])->name('order.update.status');
         });
 

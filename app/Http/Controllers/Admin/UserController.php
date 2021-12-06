@@ -8,20 +8,34 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Repository\User\UserRepositoryInterface;
 use Illuminate\Support\Facades\Hash;
+use App\Repository\ActivityHistory\ActivityHistoryRepositoryInterface;
 
 class UserController extends Controller
 {
     protected $userRepo;
+    protected $activityHistoryRepo;
+
     public function __construct(
-        UserRepositoryInterface $userRepo
+        UserRepositoryInterface $userRepo,
+        ActivityHistoryRepositoryInterface $activityHistoryRepo
     )
     {
         $this->userRepo = $userRepo;
+        $this->activityHistoryRepo = $activityHistoryRepo;
+    }
+
+    public function history($id){
+        $attributes = [
+            'user_id' => $id
+        ];
+        $historys = $this->activityHistoryRepo->getByAttributes($attributes);
+        $user = $this->userRepo->find($id);
+        return view('admin.user.history', compact('historys', 'user'));
     }
 
     public function index(){
 
-        $users = $this->userRepo->getAll()->whereNotIn('id', [1]);
+        $users = $this->userRepo->getAll();
         return view('admin.user.index', compact('users'));
     }
 

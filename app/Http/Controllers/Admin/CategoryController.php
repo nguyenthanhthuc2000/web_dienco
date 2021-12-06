@@ -8,18 +8,24 @@ use Illuminate\Http\Request;
 
 use App\Repository\Category\CategoryRepositoryInterface; //thêm tay vào (chổ này mình tự tạo https://viblo.asia/p/trien-khai-repository-trong-laravel-m68Z0x6MZkG)
 use App\Repository\Product\ProductRepositoryInterface;
+use App\Repository\ActivityHistory\ActivityHistoryRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
+use File; // them vao để thao  tác với file
 
 class CategoryController extends Controller
 {
     protected $catRepo;
     protected $proRepo;
+    protected $activityHistoryRepo;
 
     public function __construct(
         CategoryRepositoryInterface $catRepo,
-        ProductRepositoryInterface $proRepo
+        ProductRepositoryInterface $proRepo,
+        ActivityHistoryRepositoryInterface $activityHistoryRepo
     ){
         $this->catRepo = $catRepo;
         $this->proRepo = $proRepo;
+        $this->activityHistoryRepo = $activityHistoryRepo;
     }
 
     public function index(){
@@ -53,9 +59,22 @@ class CategoryController extends Controller
             'slug' => $request->slug,
             'status' => $request->status,
         ];
+        if($request->file('image')){
+            //tạo tên mới cho ảnh để k bị trùng
+            $image = substr(md5(microtime()),rand(0,5), 6).'-'.$request->file('image')->getClientOriginalName();
+            //lưu ảnh vào /upload/products
+            $request->file('image')->move('upload/categorys/', $image);
+            $array = $array + array('image' => $image);
+        }
 
         //neu luu thanh cong quay ve trang danh sách
-        if($this->catRepo->create($array)){ // goi đến catRepo ở function construct (app/Repository/BaseRepository/ function create)
+        $insert = $this->catRepo->create($array);
+        if($insert){ // goi đến catRepo ở function construct (app/Repository/BaseRepository/ function create)
+            $arrayHistory = [
+                'user_id' => Auth::id(),
+                'action' => 'Thêm mới danh mục sản phẩm ID: '.$insert->id
+            ];
+            $this->activityHistoryRepo->create($arrayHistory);
             return redirect()->route('category.index')->with('success', 'Thêm thành công!');
         }
         //neu that bai quay ve trang danh sách
@@ -87,9 +106,25 @@ class CategoryController extends Controller
             'slug' => $request->slug,
             'status' => $request->status,
         ];
+        if($request->file('image')){
+            $cat = $this->catRepo->find($id);
+            if(File::exists(public_path()."/upload/categorys/".$cat->image)){
+                File::delete(public_path()."/upload/categorys/".$cat->image);
+            }
+            //tạo tên mới cho ảnh để k bị trùng
+            $image = substr(md5(microtime()),rand(0,5), 6).'-'.$request->file('image')->getClientOriginalName();
+            //lưu ảnh vào /upload/products
+            $request->file('image')->move('upload/categorys/', $image);
+            $array = $array + array('image' => $image);
+        }
 
         //neu cập nhật thanh cong quay ve trang danh sách
         if($this->catRepo->update($id, $array)){ // goi đến catRepo ở function construct (app/Repository/BaseRepository/ function update)
+            $arrayHistory = [
+                'user_id' => Auth::id(),
+                'action' => 'Cập nhật thông tin danh mục sản phẩm ID: '.$id
+            ];
+            $this->activityHistoryRepo->create($arrayHistory);
             return redirect()->route('category.index')->with('success', 'Cập nhật thành công!');
         }
         //neu that bai quay ve trang danh sách
@@ -115,14 +150,21 @@ class CategoryController extends Controller
     public function updateStatus($id){
         $statusCat =  $this->catRepo->find($id)->status; //lấy status hiện tại
         $status = 1;
+        $mes = 'hoạt động';
         if($statusCat == 1){
             $status = 0;
+            $mes = 'ngừng hoạt động';
         }
         $array = [
             'status' => $status
         ];
         //neu cập nhật thanh cong quay ve trang danh sách
         if($this->catRepo->update($id, $array)){ // goi đến catRepo ở function construct (app/Repository/BaseRepository/ function update)
+            $arrayHistory = [
+                'user_id' => Auth::id(),
+                'action' => 'Cập nhật trạng thái danh mục sản phẩm ID: '.$id.' thành '.$mes
+            ];
+            $this->activityHistoryRepo->create($arrayHistory);
             return redirect()->route('category.index')->with('success', 'Cập nhật thành công!');
         }
         //neu that bai quay ve trang danh sách
