@@ -56,7 +56,7 @@
                     </div>
                     <div class="review-img">
                         @if($cat->image != null)
-                            <img id="review-img" src="{{asset('/upload/categorys/'.$cat->image)}}">
+                            <img id="review-img" src="{{asset('/upload/categories/'.$cat->image)}}">
                         @else
                             <img id="review-img" src="{{asset('/images/noimage.png')}}">
                         @endif

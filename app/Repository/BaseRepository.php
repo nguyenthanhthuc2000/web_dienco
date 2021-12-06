@@ -23,9 +23,7 @@ abstract class BaseRepository implements RepositoryInterface
      */
     public function setModel()
     {
-        $this->model = app()->make(
-            $this->getModel()
-        );
+        $this->model = $this->getModel();
     }
 
     public function getAll()

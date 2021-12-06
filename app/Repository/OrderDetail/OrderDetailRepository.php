@@ -1,6 +1,7 @@
 <?php
 namespace App\Repository\OrderDetail;
 
+use App\Models\OrderDetail;
 use App\Repository\BaseRepository;
 
 class OrderDetailRepository extends BaseRepository implements OrderDetailRepositoryInterface
@@ -8,7 +9,9 @@ class OrderDetailRepository extends BaseRepository implements OrderDetailReposit
     //lấy model tương ứng
     public function getModel()
     {
-        return \App\Models\OrderDetail::class;
+        $m = new OrderDetail();
+        return $m;
     }
+
 
 }

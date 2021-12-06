@@ -10,9 +10,10 @@
 
     <div class="row">
         <div class="col-md-6 pt-2">
-            <form class="">
+            <form method="get" action="{{ route('product.index') }}">
+                @csrf
                 <div class="input-group input-group-navbar">
-                    <input type="text" class="form-control" placeholder="Nhập ID sản phẩm" aria-label="Search" style="    background: #ffffff;">
+                    <input type="text" class="form-control" name="id" placeholder="Nhập ID sản phẩm" aria-label="Search" style="    background: #ffffff;">
                     <div class="input-group-append">
                         <button class="btn" style="    background: #fff;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -23,20 +24,20 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-6 pt-2">
-            <form class="">
-                <div class="input-group input-group-navbar">
-                    <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" aria-label="Search" style="    background: #ffffff;">
-                    <div class="input-group-append">
-                        <button class="btn" style="    background: #fff;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                 class="feather feather-search align-middle"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
+{{--        <div class="col-md-6 pt-2">--}}
+{{--            <form class="">--}}
+{{--                <div class="input-group input-group-navbar">--}}
+{{--                    <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" aria-label="Search" style="    background: #ffffff;">--}}
+{{--                    <div class="input-group-append">--}}
+{{--                        <button class="btn" style="    background: #fff;">--}}
+{{--                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"--}}
+{{--                                 class="feather feather-search align-middle"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </form>--}}
+{{--        </div>--}}
     </div>
     <br>
     <div class="row">
@@ -45,6 +46,7 @@
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Hình ảnh</th>
                     <th class="text-center">Giá</th>
                     <th class="text-center">Số lượng</th>
@@ -57,6 +59,7 @@
                 @if($products->count() > 0)
                     @foreach($products as $product)
                         <tr>
+                            <td>{{ $product->id }}</td>
                             <td>
                                 {{-- rounded-circle  class_radio50%--}}
                                 @if($product->image != null)
