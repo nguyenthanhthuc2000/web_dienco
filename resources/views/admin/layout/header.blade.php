@@ -12,7 +12,7 @@
 
     <link rel="shortcut icon" href="/img/icons/icon-48x48.png" />
 
-    <title>AdminKit Demo - Web UI Kit &amp; Dashboard Template</title>
+    <title>Admin Shop</title>
 
     <link href="/for_admin/css/app.css" rel="stylesheet">
     <link href="/for_admin/css/style.css" rel="stylesheet">

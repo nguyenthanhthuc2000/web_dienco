@@ -10,6 +10,7 @@ use App\Repository\Category\CategoryRepositoryInterface; //thêm tay vào (chổ
 use App\Repository\Product\ProductRepositoryInterface;
 use App\Repository\ActivityHistory\ActivityHistoryRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
+use File; // them vao để thao  tác với file
 
 class CategoryController extends Controller
 {
@@ -58,6 +59,13 @@ class CategoryController extends Controller
             'slug' => $request->slug,
             'status' => $request->status,
         ];
+        if($request->file('image')){
+            //tạo tên mới cho ảnh để k bị trùng
+            $image = substr(md5(microtime()),rand(0,5), 6).'-'.$request->file('image')->getClientOriginalName();
+            //lưu ảnh vào /upload/products
+            $request->file('image')->move('upload/categorys/', $image);
+            $array = $array + array('image' => $image);
+        }
 
         //neu luu thanh cong quay ve trang danh sách
         $insert = $this->catRepo->create($array);
@@ -98,6 +106,17 @@ class CategoryController extends Controller
             'slug' => $request->slug,
             'status' => $request->status,
         ];
+        if($request->file('image')){
+            $cat = $this->catRepo->find($id);
+            if(File::exists(public_path()."/upload/categorys/".$cat->image)){
+                File::delete(public_path()."/upload/categorys/".$cat->image);
+            }
+            //tạo tên mới cho ảnh để k bị trùng
+            $image = substr(md5(microtime()),rand(0,5), 6).'-'.$request->file('image')->getClientOriginalName();
+            //lưu ảnh vào /upload/products
+            $request->file('image')->move('upload/categorys/', $image);
+            $array = $array + array('image' => $image);
+        }
 
         //neu cập nhật thanh cong quay ve trang danh sách
         if($this->catRepo->update($id, $array)){ // goi đến catRepo ở function construct (app/Repository/BaseRepository/ function update)
