@@ -54,9 +54,11 @@
                                 </td>
                                 <td class="text-right">
                                     <a class="btn btn-primary btn__add__href" href="{{ route('code.edit', $code->id) }}">Sửa</a> &nbsp;
+                                    @if(Auth::user()->level == 1)
                                     <button class="btn btn-warning btn__add__href btn-delete" type="button"
                                             data-href="{{ route('code.delete', $code->id) }}">Xóa
                                     </button>
+                                        @endif
                                 </td>
                             </tr>
                         @endforeach

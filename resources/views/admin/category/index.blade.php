@@ -35,9 +35,11 @@
                                 </td>
                                 <td class="table-action" style="display: flex;">
                                     <a class="btn btn-primary btn__add__href" href="{{ route('category.edit', $cat->id) }}">Sửa</a> &nbsp;
+                                    @if(Auth::user()->level == 1)
                                     <button class="btn btn-warning btn__add__href btn-delete" type="button"
                                         data-href="{{ route('category.delete', $cat->id) }}">Xóa
                                     </button>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

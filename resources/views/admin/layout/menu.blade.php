@@ -27,16 +27,15 @@
                     <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Sản phẩm</span>
                 </a>
             </li>
-
+        @if(Auth::user()->level == 1)
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('code.index') }}">
                     <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Mã giảm giá</span>
                 </a>
             </li>
-
-            <li class="sidebar-header">
-               Quản lí
-            </li>
+                <li class="sidebar-header">
+                    Quản lí
+                </li>
             <li class="sidebar-item">
 
             <li class="sidebar-item">
@@ -50,11 +49,10 @@
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Lịch sử</span>
                 </a>
             </li>
+            @endif
             <li class="sidebar-header">
                 Tài khoản
             </li>
-            <li class="sidebar-item">
-
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('admin.change.password') }}">
                     <i class="align-middle" data-feather="credit-card"></i> <span class="align-middle">Đổi mật khẩu</span>

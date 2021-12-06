@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Repository\Product\ProductRepositoryInterface;
 use App\Repository\Category\CategoryRepositoryInterface;
+use App\Repository\OrderDetail\OrderDetailRepositoryInterface;
 
 use File; // them vao để thao  tác với file
 
@@ -15,14 +16,17 @@ class ProductController extends Controller
 {
     protected $proRepo;
     protected $catRepo;
+    protected $orderDetailRepo;
 
     public function __construct(
         ProductRepositoryInterface $proRepo,
-        CategoryRepositoryInterface $catRepo
+        CategoryRepositoryInterface $catRepo,
+        OrderDetailRepositoryInterface $orderDetailRepo
     )
     {
         $this->proRepo = $proRepo;
         $this->catRepo = $catRepo;
+        $this->orderDetailRepo = $orderDetailRepo;
     }
 
     public function store(Request $request){
@@ -101,7 +105,14 @@ class ProductController extends Controller
     }
 
     public function delete($id){
-
+        $attributes = [
+            'id_product' => $id
+        ];
+        $orderDetails = $this->orderDetailRepo->getByAttributesAll($attributes);
+        $products = $this->proRepo->find($id);
+        if($orderDetails->count() > 0){
+            return redirect()->route('product.index')->with('error', 'Tồn tại '.$orderDetails->count().' hóa đơn thuộc sản phẩm '.$products->name.', không thể xóa !');
+        }
         if($this->proRepo->delete($id)){
             return redirect()->route('product.index')->with('success', 'Xóa thành công!');
         }

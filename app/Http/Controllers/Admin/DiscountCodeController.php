@@ -6,17 +6,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Repository\Discount\DiscountCodeRepositoryInterface;
+use App\Repository\OrderDetail\OrderDetailRepositoryInterface;
 
 class DiscountCodeController extends Controller
 {
 
     protected $discountCodeRepo;
+    protected $orderDetailRepo;
 
     public function __construct(
-        DiscountCodeRepositoryInterface $discountCodeRepo
+        DiscountCodeRepositoryInterface $discountCodeRepo,
+        OrderDetailRepositoryInterface $orderDetailRepo
     )
     {
         $this->discountCodeRepo = $discountCodeRepo;
+        $this->orderDetailRepo = $orderDetailRepo;
     }
 
     public function index(){
@@ -89,6 +93,15 @@ class DiscountCodeController extends Controller
     }
 
     public function delete($id){
+        $attributes = [
+            'id_discount_code' => $id
+        ];
+        $orderDetails = $this->orderDetailRepo->getByAttributesAll($attributes);
+        $code = $this->discountCodeRepo->find($id);
+        if($orderDetails->count() > 0){
+            return redirect()->route('code.index')->with('error', 'Mã '.$code->code.' đã được dùng, không thể xóa !');
+        }
+
         if($this->discountCodeRepo->delete($id)){
             return redirect()->route('code.index')->with('success', 'Xóa thành công!');
         }

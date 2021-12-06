@@ -7,15 +7,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Repository\Category\CategoryRepositoryInterface; //thêm tay vào (chổ này mình tự tạo https://viblo.asia/p/trien-khai-repository-trong-laravel-m68Z0x6MZkG)
+use App\Repository\Product\ProductRepositoryInterface;
 
 class CategoryController extends Controller
 {
     protected $catRepo;
+    protected $proRepo;
 
     public function __construct(
-        CategoryRepositoryInterface $catRepo
+        CategoryRepositoryInterface $catRepo,
+        ProductRepositoryInterface $proRepo
     ){
         $this->catRepo = $catRepo;
+        $this->proRepo = $proRepo;
     }
 
     public function index(){
@@ -94,6 +98,14 @@ class CategoryController extends Controller
 
     public function delete($id){
 
+        $attributes = [
+            'category' => $id
+        ];
+        $products = $this->proRepo->getByAttributesAll($attributes);
+        $category = $this->catRepo->find($id);
+        if($products->count() > 0){
+            return redirect()->route('category.index')->with('error', 'Tồn tại '.$products->count().' sản phẩm thuộc danh mục '.$category->name.', không thể xóa !');
+        }
         if($this->catRepo->delete($id)){
             return redirect()->route('category.index')->with('success', 'Xóa thành công!');
         }
