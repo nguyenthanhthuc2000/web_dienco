@@ -81,3 +81,4 @@ Route::get('/checkout', [\App\Http\Controllers\Users\CheckoutController::class, 
 
 Route::get('cart', [\App\Http\Controllers\Users\OrderController::class, 'cart'])->name('users.cart');
 Route::post('add-to-cart', [\App\Http\Controllers\Users\OrderController::class, 'addToCart'])->name('users.add.cart');
+Route::post('store-order', [\App\Http\Controllers\Users\OrderController::class, 'storeOrder'])->name('users.store.order');

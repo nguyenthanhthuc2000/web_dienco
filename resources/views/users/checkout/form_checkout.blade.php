@@ -1,7 +1,8 @@
 @extends('users.layout.main')
 @section('content')
-
 <div class="cart-table-area section-padding-100">
+    <form action="{{ route('users.store.order') }}" method="post">
+        @csrf
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 col-lg-8">
@@ -10,7 +11,6 @@
                             <div class="cart-title">
                                 <h2>Thanh toán</h2>
                             </div>
-
                             <form action="#" method="post">
                                 <div class="row">
                                     <div class="col-md-12 mb-3">
@@ -34,19 +34,29 @@
                     </div>
                     <div class="col-12 col-lg-4">
                         <div class="cart-summary">
-                            <h5>Tổng đơn hàng</h5>
-                            <ul class="summary-table">
-                                <li><span>Phụ thu:</span> <span>$140.00</span></li>
-                                <li><span>Phí vận chuyển:</span> <span>Free</span></li>
-                                <li><span>Tổng cộng:</span> <span>$140.00</span></li>
-                            </ul>
+                            <?php
+                            $total = 0;
+                                if(Session::has('carts')){
 
+                                    foreach(Session::get('carts') as $key => $pro){
+                                        $subtotal = $pro['product_price']*$pro['product_qty'];
+                                        $total += $subtotal;
+                                    }
+                                }
+                            ?>
+                            <h5>Tổng giỏ hàng</h5>
+                            <ul class="summary-table">
+                                <li><span>Đơn giá:</span> <span>{{ number_format($total,0,',','.') }}</span></li>
+                                <li><span>Phí vận chuyển:</span> <span>Free</span></li>
+                                <li><span>Tổng thanh toán:</span> <span>{{ number_format($total,0,',','.') }}</span></li>
+                            </ul>
                             <div class="cart-btn mt-100">
-                                <a href="#" class="btn amado-btn w-100">Thanh toán</a>
+                                <a href="{{ route('users.checkout') }}" class="btn amado-btn w-100">Thanh toán</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+    </form>
         </div>
 @endsection
