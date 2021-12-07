@@ -10,4 +10,5 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     {
         return \App\Models\Category::class;
     }
+
 }

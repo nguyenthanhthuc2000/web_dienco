@@ -28,6 +28,11 @@ abstract class BaseRepository implements RepositoryInterface
         );
     }
 
+    public function get()
+    {
+        return $this->model->paginate();
+    }
+
     public function getAll()
     {
         return $this->model->orderBy('id', 'DESC')->paginate();
@@ -83,5 +88,9 @@ abstract class BaseRepository implements RepositoryInterface
         $result = $this->model->where($attributes)->orderBy('id', 'DESC')->get();
 
         return $result;
+    }
+    
+    public function getIdBySlug($slug){
+        return $this->model->where('slug', $slug)->first()->id;
     }
 }

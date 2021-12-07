@@ -20,6 +20,8 @@
     <!-- ##### Footer Area Start ##### -->
     @include('users.layout.footer')
     <!-- ##### Footer Area End ##### -->
+    
+    @include('users.layout.modal')
 </body>
 
 </html>

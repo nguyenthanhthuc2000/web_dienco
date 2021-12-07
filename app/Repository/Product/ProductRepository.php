@@ -12,6 +12,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     public function getMinPriceByCategory($category){
-        return $this->model->where('category', $category)->orderBy('price', 'DESC')->first();
+        $row = $this->model->select('price')->where('category', $category)->min('price');
+        return $row;
     }
 }

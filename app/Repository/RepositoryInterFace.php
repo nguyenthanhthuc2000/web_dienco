@@ -8,6 +8,12 @@ interface RepositoryInterface
      * Get all
      * @return mixed
      */
+    public function get();
+
+    /**
+     * Get all
+     * @return mixed
+     */
     public function getAll();
 
     /**
@@ -50,9 +56,15 @@ interface RepositoryInterface
      */
     public function getByAttributes($attributes);
 
-     /**
-      * @param array $attributes
+    /**
+     * @param array $attributes
      * @return mixed
      */
     public function getByAttributesAll($attributes);
+
+    /**
+     * @param string $slug
+     * @return mixed
+     */
+    public function getIdBySlug($slug);
 }

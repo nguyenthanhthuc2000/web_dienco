@@ -6,11 +6,16 @@
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
                     <a href="shop.html">
-                        {{-- <img src="{{ '/upload/products/'.$product->image }}" alt=""> --}}
+                        <img src="{{ '/upload/products/'.$category->image }}" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
                             <div class="line"></div>
-                            {{-- <p>Giá </p> --}}
+                            <p>Giá từ @foreach ($minPrice as $price)
+                                        @if($category->id == $price['idCategory'])
+                                            {{ number_format($price['minPrice'], 0, '.', ' ') }}
+                                        @endif
+                                    @endforeach VNĐ
+                            </p>
                             <h4>{{ $category->name }}</h4>
                         </div>
                     </a>

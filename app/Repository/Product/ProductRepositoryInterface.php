@@ -7,7 +7,8 @@ interface ProductRepositoryInterface extends RepositoryInterface
 {
     /**
      * @param int $category
-     * @return int
+     * @return mixed
      */
     public function getMinPriceByCategory($category);
+
 }

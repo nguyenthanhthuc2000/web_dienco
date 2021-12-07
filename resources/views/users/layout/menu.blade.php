@@ -26,7 +26,7 @@
         <nav class="amado-nav">
             <ul>
                 <li class="active"><a href="{{ route('users.index') }}">Trang chủ</a></li>
-                <li><a href="shop.html">Sản phẩm</a></li>
+                <li><a href="{{ route('users.product') }}">Sản phẩm</a></li>
                 {{-- <li><a href="cart.html">Cart</a></li> --}}
                 <li><a href="checkout.html">Thanh toán</a></li>
             </ul>
