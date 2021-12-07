@@ -73,6 +73,7 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::get('/index', [\App\Http\Controllers\Users\HomeController::class, 'index'])->name('users.index');
+Route::get('/', [\App\Http\Controllers\Users\HomeController::class, 'index']);
 Route::get('/product', [\App\Http\Controllers\Users\ProductController::class, 'index'])->name('users.product');
 Route::get('/product/{category}', [\App\Http\Controllers\Users\ProductController::class, 'getByCategory'])->name('users.product.category');
 Route::get('/product-detail/{slug}', [\App\Http\Controllers\Users\ProductController::class, 'detail'])->name('users.product.detail');

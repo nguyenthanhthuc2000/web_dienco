@@ -60,3 +60,9 @@
 <script src="/for_users/js/plugins.js"></script>
 <!-- Active js -->
 <script src="/for_users/js/active.js"></script>
+@stack('active')
+<script>
+    $(".amado-nav li a").filter(function(){
+			return this.href == location.href;
+		}).parents("li").addClass("active");
+</script>
