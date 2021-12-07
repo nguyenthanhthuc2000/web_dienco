@@ -65,8 +65,9 @@
 @stack('active')
 <script>
     $(".amado-nav li a").filter(function(){
-			return this.href == location.href;
-		}).parents("li").addClass("active");
+        return this.href == location.href;
+    }).parents("li").addClass("active");
+
 </script>
 <script type="text/javascript">
 
