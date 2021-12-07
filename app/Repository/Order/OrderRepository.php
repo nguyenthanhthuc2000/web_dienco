@@ -1,6 +1,7 @@
 <?php
 namespace App\Repository\Order;
 
+use App\Models\Order;
 use App\Repository\BaseRepository;
 
 class OrderRepository extends BaseRepository implements OrderRepositoryInterface
@@ -8,7 +9,8 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
     //lấy model tương ứng
     public function getModel()
     {
-        return \App\Models\Order::class;
+        $m = new Order();
+        return $m;
     }
 
 }

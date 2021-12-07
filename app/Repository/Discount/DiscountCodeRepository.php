@@ -1,6 +1,7 @@
 <?php
 namespace App\Repository\Discount;
 
+use App\Models\DiscountCode;
 use App\Repository\BaseRepository;
 
 class DiscountCodeRepository extends BaseRepository implements DiscountCodeRepositoryInterface
@@ -8,7 +9,8 @@ class DiscountCodeRepository extends BaseRepository implements DiscountCodeRepos
     //lấy model tương ứng
     public function getModel()
     {
-        return \App\Models\DiscountCode::class;
+        $m = new DiscountCode();
+        return $m;
     }
 
 }

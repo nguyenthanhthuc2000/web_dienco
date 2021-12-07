@@ -1,11 +1,12 @@
 @extends('admin.layout.main')
 @section('content')
-    <h1 class="h3 mb-3">Hóa đơn</h1>
-    <div class="row">
-        <div class="col-md-6 pt-2">
-            <form class="">
+    <div class="header-page">
+        <h1 class="h3 mb-3">Hóa đơn</h1>
+        <div class="">
+            <form method="get" action="{{ route('order.index') }}">
+                @csrf
                 <div class="input-group input-group-navbar">
-                    <input type="text" class="form-control" placeholder="Nhập ID hóa đơn" aria-label="Search" style="    background: #ffffff;">
+                    <input type="text" class="form-control" name="order_code" placeholder="Nhập mã hóa đơn" aria-label="Search" style="    background: #ffffff;">
                     <div class="input-group-append">
                         <button class="btn" style="    background: #fff;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -24,6 +25,7 @@
                 <table class="table">
                     <thead>
                     <tr>
+                        <th>Mã hóa đơn</th>
                         <th>Khách hàng</th>
                         <th>Email</th>
                         <th>Số điện thoại</th>
@@ -36,6 +38,7 @@
                     @if($orders->count() > 0)
                         @foreach($orders as $order)
                         <tr>
+                            <td>{{$order->order_code}}</td>
                             <td>{{$order->name}}</td>
                             <td>{{$order->email}}</td>
                             <td>{{$order->phone}}</td>
@@ -52,7 +55,7 @@
                                 @endif
                             </td>
                             <td class="text-right">
-                                <a class="btn btn-primary btn__add__href" href="{{ route('order.detail', $order->id) }}">Chi tiết</a>
+{{--                                <a class="btn btn-primary btn__add__href" href="{{ route('order.detail', $order->id) }}">Chi tiết</a>--}}
                                 @if(Auth::user()->level == 1)&nbsp;
                                 <button class="btn btn-warning btn__add__href btn-delete" type="button"
                                         data-href="{{ route('order.delete', $order->id) }}">Xóa

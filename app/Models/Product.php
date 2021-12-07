@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Scope;
+use Illuminate\Database\Eloquent\Builder;
 
 class Product extends Model
 {
@@ -13,5 +15,19 @@ class Product extends Model
     protected $guarded = [];    // lưu được tất cả các trường trong db nêu dùng
     // protected $fillable = ['name', 'slug', 'status']; thì chỉ lưu được 3 trường đó
     public $timestamps = true; // luu ngày tháng khi tạo sản phẩm
+<<<<<<< HEAD
     protected $perPage = 6; // limit phân trang
+=======
+    protected $perPage = 5; // limit phân trang
+
+    public function scopeId($query, $request)
+    {
+//        dd('ok');
+        if ($request->has('id') && $request->id != '') {
+            $query->where('id', $request->id);
+        }
+        return $query;
+    }
+
+>>>>>>> 67bfd8d1c5a1921cfdfbb41ea1d519976c5ad5a2
 }

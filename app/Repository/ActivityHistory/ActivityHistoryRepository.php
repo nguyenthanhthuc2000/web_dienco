@@ -2,13 +2,17 @@
 namespace App\Repository\ActivityHistory;
 
 use App\Repository\BaseRepository;
+use App\Models\ActivityHistory;
 
 class ActivityHistoryRepository extends BaseRepository implements ActivityHistoryRepositoryInterface
 {
     //lấy model tương ứng
+
     public function getModel()
     {
-        return \App\Models\ActivityHistory::class;
+        $m = new ActivityHistory();
+        return $m;
     }
+
 
 }

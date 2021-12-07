@@ -1,6 +1,7 @@
 <?php
 namespace App\Repository\Category;
 
+use App\Models\Category;
 use App\Repository\BaseRepository;
 
 class CategoryRepository extends BaseRepository implements CategoryRepositoryInterface
@@ -8,7 +9,7 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     //lấy model tương ứng
     public function getModel()
     {
-        return \App\Models\Category::class;
+        $m = new Category();
+        return $m;
     }
-
 }

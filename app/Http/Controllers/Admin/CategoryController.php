@@ -63,7 +63,7 @@ class CategoryController extends Controller
             //tạo tên mới cho ảnh để k bị trùng
             $image = substr(md5(microtime()),rand(0,5), 6).'-'.$request->file('image')->getClientOriginalName();
             //lưu ảnh vào /upload/products
-            $request->file('image')->move('upload/categorys/', $image);
+            $request->file('image')->move('upload/categories/', $image);
             $array = $array + array('image' => $image);
         }
 
@@ -108,13 +108,13 @@ class CategoryController extends Controller
         ];
         if($request->file('image')){
             $cat = $this->catRepo->find($id);
-            if(File::exists(public_path()."/upload/categorys/".$cat->image)){
-                File::delete(public_path()."/upload/categorys/".$cat->image);
+            if(File::exists(public_path()."/upload/categories/".$cat->image)){
+                File::delete(public_path()."/upload/categories/".$cat->image);
             }
             //tạo tên mới cho ảnh để k bị trùng
             $image = substr(md5(microtime()),rand(0,5), 6).'-'.$request->file('image')->getClientOriginalName();
             //lưu ảnh vào /upload/products
-            $request->file('image')->move('upload/categorys/', $image);
+            $request->file('image')->move('upload/categories/', $image);
             $array = $array + array('image' => $image);
         }
 

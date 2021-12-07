@@ -11,7 +11,7 @@ class ActivityHistory extends Model
     protected $table = 'activity_history'; // tên bảng trong db
     protected $guarded = [];    // lưu được tất cả các trường trong db nêu dùng
     public $timestamps = true;
-    protected $perPage = 5; // limit phân trang
+    protected $perPage = 15; // limit phân trang
 
     public function user(){
         return $this->hasOne(User::class, 'id', 'user_id');

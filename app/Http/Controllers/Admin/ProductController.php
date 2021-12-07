@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,6 +11,7 @@ use App\Repository\Product\ProductRepositoryInterface;
 use App\Repository\Category\CategoryRepositoryInterface;
 use App\Repository\OrderDetail\OrderDetailRepositoryInterface;
 use App\Repository\ActivityHistory\ActivityHistoryRepositoryInterface;
+use DB;
 
 use File; // them vao để thao  tác với file
 
@@ -83,9 +85,13 @@ class ProductController extends Controller
         return redirect()->route('product.index')->with('error', 'Thêm thất bại!');
     }
 
-    public function index(){
+    public function index(Request $request){
 
-        $products = $this->proRepo->getAll();
+//        $products = $this->proRepo->scopeidProduct($request);
+//        $products->scopeidProduct($request);
+        $products = Product::Id($request)->orderBy('id', 'DESC')->paginate(5);
+        $products->appends(['id' => $request->id]);
+
         return view('admin.product.index', compact('products'));
     }
 
