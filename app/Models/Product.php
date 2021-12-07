@@ -19,6 +19,7 @@ class Product extends Model
 
     public function scopeId($query, $request)
     {
+//        dd('ok');
         if ($request->has('id') && $request->id != '') {
             $query->where('id', $request->id);
         }

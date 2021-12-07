@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
 use App\Repository\User\UserRepositoryInterface;
 use Illuminate\Support\Facades\Hash;
 use App\Repository\ActivityHistory\ActivityHistoryRepositoryInterface;
+use DB;
 
 class UserController extends Controller
 {
@@ -33,9 +35,10 @@ class UserController extends Controller
         return view('admin.user.history', compact('historys', 'user'));
     }
 
-    public function index(){
+    public function index(Request $request){
 
-        $users = $this->userRepo->getAll();
+        $users = User::FilterEmail($request)->orderBy('id', 'DESC')->paginate(5);
+        $users->appends(['email' => $request->email]);
         return view('admin.user.index', compact('users'));
     }
 
@@ -56,6 +59,7 @@ class UserController extends Controller
         }
         //neu that bai quay ve trang danh sách
         return redirect()->route('user.index')->with('error', 'Cập nhật thất bại!');
+
     }
 
     public function store(Request $request)

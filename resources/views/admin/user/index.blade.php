@@ -9,9 +9,10 @@
     </div>
     <div class="row">
         <div class="col-md-6 pt-2">
-            <form class="">
+            <form class="{{ route('user.index') }}" method="get">
+                @csrf
                 <div class="input-group input-group-navbar">
-                    <input type="text" class="form-control" placeholder="Nhập ID hóa đơn" aria-label="Search" style="    background: #ffffff;">
+                    <input type="text" class="form-control" placeholder="Nhập email" aria-label="Search" name="email" style="    background: #ffffff;">
                     <div class="input-group-append">
                         <button class="btn" style="    background: #fff;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -40,7 +41,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @if($users->count() > 1)
+                    @if($users->count() > 0)
                             @foreach($users as $user)
                                 @if($user->id > 1)
                                 <tr>
