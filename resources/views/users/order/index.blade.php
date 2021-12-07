@@ -2,6 +2,7 @@
 @section('content')
 
     <div class="cart-table-area section-padding-100 ">
+        <form action="" method="post">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-lg-8">
@@ -39,9 +40,9 @@
                                                 <div class="qty-btn d-flex">
                                                     <p>SL</p>
                                                     <div class="quantity">
-                                                        <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty > 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="{{ $pro['product_qty'] }}">
-                                                        <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                                        <span class="qty-minus" onclick="var effect = document.getElementById('qty{{$pro['product_id']}}'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty > 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                                        <input type="number" class="qty-text" id="qty{{$pro['product_id']}}" step="1" min="1" max="300" name="quantity" value="{{ $pro['product_qty'] }}">
+                                                        <span class="qty-plus" onclick="var effect = document.getElementById('qty{{$pro['product_id']}}'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                                                     </div>
                                                 </div>
                                             </td>
@@ -66,9 +67,7 @@
                             @endif
                             </tbody>
                         </table>
-                        <div class="col-12 text-right">
-                            <a href="{{ route('users.store.order') }}" type="button" class="btn btn-mute disable-hover">Cập nhật giỏ hàng</a>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-12 col-lg-4">
@@ -89,12 +88,16 @@
                             </li>
                             <li><span>Tổng thanh toán:</span> <span>{{ number_format($total,0,',','.') }}</span></li>
                         </ul>
-                        <div class="cart-btn mt-100">
+                        <div class="cart-btn">
+                            <button class="btn amado-btn w-100">Cập nhật giỏ hàng</button>
+                        </div>
+                        <div class="cart-btn mt-30">
                             <a href="{{ route('users.checkout') }}" class="btn amado-btn w-100">Thanh toán</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        </form>
     </div>
 @endsection

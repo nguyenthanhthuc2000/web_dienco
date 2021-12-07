@@ -116,4 +116,8 @@ class OrderController extends Controller
         }
         return redirect()->route('users.cart')->with('error', 'Lỗi, vui lòng thử lại!');
     }
+
+    public function updateCart(Request $request){
+
+    }
 }

@@ -55,7 +55,7 @@
                                 @endif
                             </td>
                             <td class="text-right">
-{{--                                <a class="btn btn-primary btn__add__href" href="{{ route('order.detail', $order->id) }}">Chi tiết</a>--}}
+                                <a class="btn btn-primary btn__add__href" href="{{ route('order.detail', $order->id) }}">Chi tiết</a>
                                 @if(Auth::user()->level == 1)&nbsp;
                                 <button class="btn btn-warning btn__add__href btn-delete" type="button"
                                         data-href="{{ route('order.delete', $order->id) }}">Xóa
