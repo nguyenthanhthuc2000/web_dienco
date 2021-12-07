@@ -59,7 +59,22 @@
                             <h5>Tổng giỏ hàng</h5>
                             <ul class="summary-table">
                                 <li><span>Đơn giá:</span> <span>{{ number_format($total,0,',','.') }}</span></li>
-                                <li><span>Phí vận chuyển:</span> <span>Free</span></li>
+                                @if(Session::has('discount_code'))
+                                    <?php
+                                    $code = Session::get('discount_code');
+                                    $reduce = 0;
+                                    if($code[0]['discount_type'] == 2){
+                                        $reduce = $code[0]['discount_number'];
+                                    }
+                                    else{
+                                        $reduce = ($total / 100) * $code[0]['discount_number'];
+                                    }
+                                    $total = $total - $reduce;
+
+                                    ?>
+                                    <li><span>Giảm giá ( {{$code[0]['discount_code']}} )</span> <span>{{ number_format($reduce, 0, ',', '.') }}</span></li>
+                                @endif
+                                <li><span>Phí vận chuyển:</span> <span>Miễn phí</span></li>
                                 {{-- <li>
                                     <div class="col-12 p-0">
                                         <input type="text" class="form-control" id="voucher" min="0" placeholder="Nhập mã giảm giá" value="">

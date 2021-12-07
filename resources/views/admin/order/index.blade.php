@@ -1,5 +1,6 @@
 @extends('admin.layout.main')
 @section('content')
+    @include('admin.layout.alert')
     <div class="header-page">
         <h1 class="h3 mb-3">Hóa đơn</h1>
         <div class="">
@@ -82,4 +83,26 @@
         </div>
     </div>
 @endsection
+
+@push('js')
+    <script>
+        $('.btn-delete').click(function(){
+            var url = $(this).data('href');
+            Swal.fire({
+              title: 'Bạn có chắc chắn xóa?',
+              text: "Sau khi xóa không thể khôi phục!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Xóa ngay',
+              cancelButtonText: 'Hủy'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                   window.location.href = url;
+              }
+            })
+        })
+    </script>
+@endpush
 
