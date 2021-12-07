@@ -85,9 +85,9 @@ a:focus:not(a.disable-hover) {
     transition: all 500ms ease 0s;
     text-decoration: none;
     outline: 0 solid transparent;
-    color: #131212;
+    color: #fff;
     font-weight: 400;
-    font-size: 12px;
+    /* font-size: 12px; */
 }
 
 ul,
