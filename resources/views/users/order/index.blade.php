@@ -51,18 +51,23 @@
                                                 ?>
                                                 <span>{{ number_format($subtotal,0,',','.') }}</span>
                                             </td>
-                                            <td>Xóa</td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger">Xóa</button>
+                                            </td>
                                         </tr>
                                     @endforeach
                             @else
-                                <tr>
-                                    <td colspan="5">
-                                        <strong> Không có dữ liệu</strong>
+                                <tr class="d-block">
+                                    <td colspan="5" class="text-center text-dark">
+                                        <strong>Không có dữ liệu  <a href="{{ route('users.product') }}" class="text-primary"><i>(Quay lại mua sắm)</i></a></strong>
                                     </td>
                                 </tr>
                             @endif
                             </tbody>
                         </table>
+                        <div class="col-12 text-right">
+                            <a href="{{ route('users.store.order') }}" type="button" class="btn btn-mute disable-hover">Cập nhật giỏ hàng</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-12 col-lg-4">
@@ -76,6 +81,11 @@
                             ?>
                             <li><span>Đơn giá:</span> <span>{{ number_format($total,0,',','.') }}</span></li>
                             <li><span>Phí vận chuyển:</span> <span>Free</span></li>
+                            <li>
+                                <div class="col-12 p-0">
+                                    <input type="text" class="form-control" id="voucher" min="0" placeholder="Nhập mã giảm giá" value="">
+                                </div>
+                            </li>
                             <li><span>Tổng thanh toán:</span> <span>{{ number_format($total,0,',','.') }}</span></li>
                         </ul>
                         <div class="cart-btn mt-100">

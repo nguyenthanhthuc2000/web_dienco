@@ -16,7 +16,7 @@
                         <!-- Product Meta Data -->
                         <div class="product-meta-data">
                             <div class="line"></div>
-                            <p class="product-price">{{ number_format($detailProduct['price'],0,'.',' ') }} VNĐ</p>
+                            <p class="product-price">{{ number_format($detailProduct['price'],0,',','.') }} VNĐ</p>
                             <a href="">
                                 <h6>{{ $detailProduct['name'] }}</h6>
                             </a>

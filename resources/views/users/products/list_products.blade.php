@@ -90,7 +90,7 @@
                             <!-- Product Meta Data -->
                             <div class="product-meta-data">
                                 <div class="line"></div>
-                                <p class="product-price">{{ number_format($product->price, 0, '.', ' ') }} VNĐ</p>
+                                <p class="product-price">{{ number_format($product->price, 0, ',', '.') }} VNĐ</p>
                                 <a href="{{ route('users.product.detail', $product->slug) }}">
                                     <h6>{{ $product->name }}</h6>
                                 </a>

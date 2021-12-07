@@ -12,7 +12,7 @@
                             <div class="line"></div>
                             <p>Giá từ @foreach ($minPrice as $price)
                                         @if($category->id == $price['idCategory'])
-                                            {{ number_format($price['minPrice'], 0, '.', ' ') }}
+                                            {{ number_format($price['minPrice'], 0, ',', '.') }}
                                         @endif
                                     @endforeach VNĐ
                             </p>

@@ -48,6 +48,11 @@
                             <ul class="summary-table">
                                 <li><span>Đơn giá:</span> <span>{{ number_format($total,0,',','.') }}</span></li>
                                 <li><span>Phí vận chuyển:</span> <span>Free</span></li>
+                                {{-- <li>
+                                    <div class="col-12 p-0">
+                                        <input type="text" class="form-control" id="voucher" min="0" placeholder="Nhập mã giảm giá" value="">
+                                    </div>
+                                </li> --}}
                                 <li><span>Tổng thanh toán:</span> <span>{{ number_format($total,0,',','.') }}</span></li>
                             </ul>
                             <div class="cart-btn mt-100">
