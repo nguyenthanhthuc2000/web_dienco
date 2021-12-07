@@ -78,3 +78,5 @@ Route::get('/product', [\App\Http\Controllers\Users\ProductController::class, 'i
 Route::get('/product/{category}', [\App\Http\Controllers\Users\ProductController::class, 'getByCategory'])->name('users.product.category');
 Route::get('/product-detail/{slug}', [\App\Http\Controllers\Users\ProductController::class, 'detail'])->name('users.product.detail');
 
+Route::get('cart', [\App\Http\Controllers\Users\OrderController::class, 'cart'])->name('users.cart');
+Route::post('add-to-cart', [\App\Http\Controllers\Users\OrderController::class, 'addToCart'])->name('users.add.cart');

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <!-- Title  -->
     <title>Amado - Furniture Ecommerce Template | Home</title>
 
@@ -15,5 +15,6 @@
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="/for_users/css/core-style.css">
     <link rel="stylesheet" href="/for_users/css/style.css">
+    <link rel="stylesheet" href="/vendor/css/sweetalert2.min.css">
 
 </head>

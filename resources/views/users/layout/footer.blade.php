@@ -60,9 +60,60 @@
 <script src="/for_users/js/plugins.js"></script>
 <!-- Active js -->
 <script src="/for_users/js/active.js"></script>
+
+<script src="/vendor/js/sweetalert2.min.js"></script>
 @stack('active')
 <script>
     $(".amado-nav li a").filter(function(){
 			return this.href == location.href;
 		}).parents("li").addClass("active");
 </script>
+<script type="text/javascript">
+
+		$('.add-cart').click(function(){
+		    var url = $(this).data('url');
+			var id = $(this).data('id');
+            var cart_product_qty = $('.cart_product_qty_' +id).val();
+			if( $(this).data('sl') == '0'){
+    			Swal.fire(
+				  'Sản phẩm đã hết hàng!',
+				  'Vui lòng quay lại sau! Hoặc LH shop để được tư vấn',
+				  'error'
+				)
+			}
+			else if($(this).data('price') == '0'){
+    			Swal.fire(
+				  'Liên hệ chủ shop!',
+				  'Liên hệ chủ CSKH để được báo giá',
+				  'error'
+				)
+			}
+			else{
+			    $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+				 $.ajax({
+                	url: url,
+                	method:'POST',
+                	data:{id:id,cart_product_qty:cart_product_qty},
+                	success:function(data){
+                		if(data==1){
+                			Swal.fire(
+							  'Thêm giỏ hàng thành công!',
+							  'Tiếp tục mua hàng!',
+							  'success'
+							)
+                		}else{
+                			Swal.fire(
+							  'Thất bại!',
+							  'Thử lại sau!',
+							  'error'
+							)
+                		}
+                	}
+                })
+			}
+		})
+	</script>
