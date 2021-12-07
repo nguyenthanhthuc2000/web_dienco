@@ -9,15 +9,16 @@
                         <h2>Giỏ hàng</h2>
                     </div>
 
+                    @include('admin.layout.alert')
+
                     <div class="cart-table clearfix">
                         <table class="table table-responsive" tabindex="1" style="overflow: hidden; outline: none;">
                             <thead>
                             <tr>
-                                <th></th>
-                                <th>Sản phẩm</th>
+                                <th>Hình ảnh</th>
+                                <th>Tên sản phẩm</th>
                                 <th>Số lượng</th>
                                 <th>Thành tiền</th>
-                                <th>Thao tác</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -51,9 +52,12 @@
                                                 ?>
                                                 <span>{{ number_format($subtotal,0,',','.') }}</span>
                                             </td>
+<<<<<<< HEAD
                                             <td>
                                                 <button type="button" class="btn btn-danger">Xóa</button>
                                             </td>
+=======
+>>>>>>> 0d74de8d1a0252491bc5ab33ea284e92b63d5799
                                         </tr>
                                     @endforeach
                             @else
