@@ -52,12 +52,9 @@
                                                 ?>
                                                 <span>{{ number_format($subtotal,0,',','.') }}</span>
                                             </td>
-<<<<<<< HEAD
                                             <td>
                                                 <button type="button" class="btn btn-danger">Xóa</button>
                                             </td>
-=======
->>>>>>> 0d74de8d1a0252491bc5ab33ea284e92b63d5799
                                         </tr>
                                     @endforeach
                             @else
