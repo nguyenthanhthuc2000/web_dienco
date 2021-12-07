@@ -116,4 +116,12 @@
         </div>
     </div>
 </div>
+@push('active')
+    <script>
+        {{--active menu--}}
+        $(".catagories-menu li a").filter(function(){
+            return this.href == location.href;
+        }).parents("li").addClass("active");
+    </script>
+@endpush
 @endsection

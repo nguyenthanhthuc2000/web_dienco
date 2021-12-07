@@ -5,7 +5,7 @@
             @foreach ($listCategory as $category)
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="{{ route('users.product.category', $category->slug) }}">
                         <img src="{{ '/upload/products/'.$category->image }}" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">

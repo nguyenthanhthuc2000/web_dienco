@@ -28,7 +28,7 @@
                 <li><a href="{{ route('users.index') }}">Trang chủ</a></li>
                 <li><a href="{{ route('users.product') }}">Sản phẩm</a></li>
                 {{-- <li><a href="cart.html">Cart</a></li> --}}
-                <li><a href="checkout.html">Thanh toán</a></li>
+                <li><a href="{{ route('users.checkout') }}">Thanh toán</a></li>
             </ul>
         </nav>
         <!-- Button Group -->
