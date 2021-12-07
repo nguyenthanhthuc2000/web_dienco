@@ -15,12 +15,10 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         return $m;
     }
 
-<<<<<<< HEAD
     public function getMinPriceByCategory($category){
         $row = $this->model->select('price')->where('category', $category)->min('price');
         return $row;
     }
-=======
 //    public function scopeidProduct($query, $request)
 //    {
 //        return  $this->model->scopeId($query, $request);
@@ -32,5 +30,4 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 //        }
 //        return $query;
 //    }
->>>>>>> 67bfd8d1c5a1921cfdfbb41ea1d519976c5ad5a2
 }

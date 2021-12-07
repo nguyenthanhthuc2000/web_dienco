@@ -15,10 +15,8 @@ class Product extends Model
     protected $guarded = [];    // lưu được tất cả các trường trong db nêu dùng
     // protected $fillable = ['name', 'slug', 'status']; thì chỉ lưu được 3 trường đó
     public $timestamps = true; // luu ngày tháng khi tạo sản phẩm
-<<<<<<< HEAD
     protected $perPage = 6; // limit phân trang
-=======
-    protected $perPage = 5; // limit phân trang
+    // protected $perPage = 5; // limit phân trang
 
     public function scopeId($query, $request)
     {
@@ -29,5 +27,4 @@ class Product extends Model
         return $query;
     }
 
->>>>>>> 67bfd8d1c5a1921cfdfbb41ea1d519976c5ad5a2
 }
