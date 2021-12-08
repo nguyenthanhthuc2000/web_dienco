@@ -60,6 +60,7 @@
 
 <script src="/vendor/js/sweetalert2.min.js"></script>
 @stack('active')
+@stack('js')
 <script>
     $(".amado-nav li a").filter(function(){
         return this.href == location.href;

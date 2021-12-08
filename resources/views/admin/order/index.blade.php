@@ -3,6 +3,7 @@
     Hóa đơn
 @endsection
 @section('content')
+    @include('admin.layout.alert')
     <div class="header-page">
         <h1 class="h3 mb-3">Hóa đơn</h1>
         <div class="">
@@ -30,9 +31,9 @@
                     <tr>
                         <th>Mã hóa đơn</th>
                         <th>Khách hàng</th>
-                        <th>Email</th>
                         <th>Số điện thoại</th>
-                        <th>Tổng hóa đơn</th>
+                        <th>Ngày lập</th>
+                        <th>Tổng(VNĐ)</th>
                         <th>Trạng thái</th>
                         <th class="text-right">Thao tác</th>
                     </tr>
@@ -41,11 +42,11 @@
                     @if($orders->count() > 0)
                         @foreach($orders as $order)
                         <tr>
-                            <td>{{$order->order_code}}</td>
+                            <td>{{strtoupper($order->order_code)}}</td>
                             <td>{{$order->name}}</td>
-                            <td>{{$order->email}}</td>
                             <td>{{$order->phone}}</td>
-                            <td>{{$order->total_money}}</td>
+                            <td>{{$order->created_at}}</td>
+                            <td>{{ number_format($order->total_money,0,',','.')}}</td>
                             <td>
                                 @if($order->status == 0)
                                     Chờ xử lí
@@ -58,7 +59,7 @@
                                 @endif
                             </td>
                             <td class="text-right">
-{{--                                <a class="btn btn-primary btn__add__href" href="{{ route('order.detail', $order->id) }}">Chi tiết</a>--}}
+                                <a class="btn btn-primary btn__add__href" href="{{ route('order.detail', $order->order_code) }}">Chi tiết</a>
                                 @if(Auth::user()->level == 1)&nbsp;
                                 <button class="btn btn-warning btn__add__href btn-delete" type="button"
                                         data-href="{{ route('order.delete', $order->id) }}">Xóa
@@ -85,4 +86,26 @@
         </div>
     </div>
 @endsection
+
+@push('js')
+    <script>
+        $('.btn-delete').click(function(){
+            var url = $(this).data('href');
+            Swal.fire({
+              title: 'Bạn có chắc chắn xóa?',
+              text: "Sau khi xóa không thể khôi phục!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Xóa ngay',
+              cancelButtonText: 'Hủy'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                   window.location.href = url;
+              }
+            })
+        })
+    </script>
+@endpush
 

@@ -54,9 +54,9 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('order')->group(function () {
             Route::get('index', [\App\Http\Controllers\Admin\OrderController::class, 'index'])->name('order.index');
-            Route::get('detail/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'detail'])->name('order.detail');
+            Route::get('detail/{order_code}', [\App\Http\Controllers\Admin\OrderController::class, 'detail'])->name('order.detail');
             Route::get('delete/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'delete'])->name('order.delete')->middleware(CheckRole::class);
-            Route::get('update-status/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'updateStatus'])->name('order.update.status');
+            Route::post('update-status', [\App\Http\Controllers\Admin\OrderController::class, 'updateStatus'])->name('order.update.status');
         });
 
         //ma giam gia
@@ -82,6 +82,6 @@ Route::get('/checkout', [\App\Http\Controllers\Users\CheckoutController::class, 
 
 Route::get('cart', [\App\Http\Controllers\Users\OrderController::class, 'cart'])->name('users.cart');
 Route::post('add-to-cart', [\App\Http\Controllers\Users\OrderController::class, 'addToCart'])->name('users.add.cart');
+Route::get('delete-product-cart/{id}', [\App\Http\Controllers\Users\OrderController::class, 'delProCart'])->name('users.del.cart');
 Route::post('store-order', [\App\Http\Controllers\Users\OrderController::class, 'storeOrder'])->name('users.store.order');
-
-
+Route::post('update-cart', [\App\Http\Controllers\Users\OrderController::class, 'updateCart'])->name('users.update.order');

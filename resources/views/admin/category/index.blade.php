@@ -5,7 +5,7 @@
 @section('content')
     @include('admin.layout.alert')
     <div class="header-page">
-        <h1 class="h3 mb-3">Danh mục sản phẩm</h1>
+        <h1 class="h3 mb-3">Danh mục</h1>
         <div class="list-btn">
             <a class="btn btn-primary btn__add__href" href="{{ route('category.add') }}"><i class="fas fa-plus"></i> &nbsp;Thêm mới</a>
         </div>

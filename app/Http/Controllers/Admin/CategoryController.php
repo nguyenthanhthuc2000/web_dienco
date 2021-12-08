@@ -44,12 +44,16 @@ class CategoryController extends Controller
         $this->validate($request,
             //required = Không được bỏ trống  https://laravel.com/docs/8.x/validation#rule-required
             [
-                'name' => ['required'],
+                'name' => [
+                    'required',
+                    "unique:App\Models\Category,name" // check xem name đã tồn tại chưa
+                ],
                 'slug' => ['required'],
             ],
             //trả lại thông báo ở giao diện phía dưới input // xem ở trang view/admin/category/add
             [
                 'name.required' => 'Vui lòng nhập tên',
+                'name.unique' => 'Tên danh mục đã tồn tại',
                 'slug.required' =>  'Vui lòng nhập slug',
             ],
         );
@@ -100,6 +104,13 @@ class CategoryController extends Controller
                 'slug.required' =>  'Vui lòng nhập slug',
             ],
         );
+
+        //kiemtra trùng name
+        $arrayName = $this->catRepo->getAllItem()->whereNotIn('id', [$id])->pluck('name')->all(); // lấy danh sách name
+        if(in_array($request->name, $arrayName)){
+            return redirect()->back()->withInput()->with('nameExist', 'Tên đã đã tồn tại');
+        }
+
         //tao mang chua du lieu can insert //name slug status
         $array = [
             'name' => $request->name,
