@@ -33,11 +33,16 @@
                     <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Mã giảm giá</span>
                 </a>
             </li>
+            @endif
                 <li class="sidebar-header">
                     Quản lí
                 </li>
-            <li class="sidebar-item">
-
+                <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('product.comment') }}">
+                    <i class="fas fa-comment"></i> <span class="align-middle">Bình luận</span>
+                </a>
+            </li>
+            @if(Auth::user()->level == 1)
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('user.index') }}">
                     <i class="align-middle" data-feather="credit-card"></i> <span class="align-middle">Nhân viên</span>

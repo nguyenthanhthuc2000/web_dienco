@@ -42,6 +42,9 @@
                                     </div>
                                     <div class="col-12 mb-3">
                                         <textarea class="form-control w-100" id="comment" name="note" cols="30" rows="10" placeholder="Nội dụng ghi chú"></textarea>
+                                        @error('note')
+                                        <span class="error text-danger" >{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                         </div>

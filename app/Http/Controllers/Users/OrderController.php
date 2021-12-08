@@ -73,6 +73,7 @@ class OrderController extends Controller
                 'email' => ['required'],
                 'address' => ['required'],
                 'phone' => ['required', 'max:12', 'min:10'],
+                'note' => ['required'],
             ],
             //trả lại thông báo ở giao diện phía dưới input // xem ở trang view/admin/category/add
             [
@@ -80,6 +81,7 @@ class OrderController extends Controller
                 'email.required' =>  'Vui lòng nhập địa chỉ email',
                 'address.required' =>  'Vui lòng nhập địa chỉ nhận hàng',
                 'phone.required' =>  'Vui lòng nhập số điện thoại',
+                'note.required' =>  'Vui lòng nhập ghi chú',
                 'phone.max' =>  'Sai định dạng',
                 'phone.min' =>  'Sai định dạng',
             ],

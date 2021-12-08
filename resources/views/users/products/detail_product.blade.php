@@ -24,14 +24,17 @@
                                 <h6>{{ $detailProduct['name'] }}</h6>
                             </a>
                             <!-- Ratings & Review -->
-                            <div class="ratings-review mb-15">
+                            <div class="ratings-review mb-1 d-flex justify-content-between">
                                 <div class="review">
-                                    <button type="button" class="btn bg-transparent pl-0 pr-0 shadow-none" data-toggle="modal" data-target="#review">Viết đánh giá</button>
+                                    <button type="button" class="btn btn-mute shadow-none" data-toggle="modal" data-target="#review">Viết đánh giá</button>
+                                </div>
+                                <div class="comment">
+                                    <button type="button" class="btn bg-secondary text-light shadow-none" data-toggle="modal" data-target="#comment">Xem đánh giá</button>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="short_overview my-5">
+                        <div class="short_overview my-3">
                             <p>{{ $detailProduct['description'] }}</p>
                         </div>
 
@@ -62,10 +65,42 @@
         </div>
     </div>
     <!-- Product Details Area End -->
-    @push('modal')
+@push('modal')
      <!-- Modal -->
      <div class="modal fade" id="review" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <form action="{{ route('users.product.comment') }}" method="post">
+            @csrf
+                <input value="{{ $detailProduct['id'] }}" type="text" hidden name="id_product">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Viết đánh giá</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Tên</label>
+                        <input type="text" class="form-control" id="recipient-name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Nội dung:</label>
+                        <textarea class="form-control" id="message-text" name="content"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Gửi</button>
+                </div>
+                
+            </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="comment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Đánh giá</h5>
@@ -74,23 +109,38 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
-                <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Tên</label>
-                    <input type="text" class="form-control" id="recipient-name">
-                </div>
-                <div class="form-group">
-                    <label for="message-text" class="col-form-label">Nội dung:</label>
-                    <textarea class="form-control" id="message-text"></textarea>
-                </div>
-                </form>
+                @if(!$listComments)
+                    <div class="col-12 text-center">Chưa có đánh giá</div>
+                @else
+                    @foreach($listComments as $comment)
+                        <div class="d-flex flex-row comment-row m-t-0">
+                            <div class="comment-text w-100 d-flex align-items-center">
+                                <h6 class="font-medium mb-0">{{ $comment->name }}:</h6>
+                                <p class="m-b-15 d-block ml-3 text-sm m-0">{{ $comment->contents }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary">Gửi</button>
             </div>
             </div>
         </div>
     </div>
     @endpush
+    @if(Session::has('success'))
+        @push('js')
+            <script>
+                Swal.fire({
+                    title: 'Đã gửi đánh giá',
+                    icon: 'success',
+                    showCancelButton: false,
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Hủy',
+                    timer: 2000
+                })
+            </script>
+    @endpush
+    @endif
 @endsection

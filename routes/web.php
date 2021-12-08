@@ -33,6 +33,8 @@ Route::prefix('admin')->group(function () {
             Route::post('store', [\App\Http\Controllers\Admin\ProductController::class, 'store'])->name('product.store');
             Route::post('update/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'update'])->name('product.update');
             Route::get('update-status/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'updateStatus'])->name('product.update.status');
+            Route::get('comment', [\App\Http\Controllers\Admin\CommentController::class, 'index'])->name('product.comment');
+            Route::get('delete-comment/{id}', [\App\Http\Controllers\Admin\CommentController::class, 'delete'])->name('product.comment.delete');
         });
 
         Route::prefix('user')->group(function () {
@@ -73,12 +75,12 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::get('/', [\App\Http\Controllers\Users\HomeController::class, 'index']);
-Route::get('/index', [\App\Http\Controllers\Users\HomeController::class, 'index'])->name('users.index');
-Route::get('/product', [\App\Http\Controllers\Users\ProductController::class, 'index'])->name('users.product');
-Route::get('/product/{category}', [\App\Http\Controllers\Users\ProductController::class, 'getByCategory'])->name('users.product.category');
-Route::get('/product-detail/{slug}', [\App\Http\Controllers\Users\ProductController::class, 'detail'])->name('users.product.detail');
-Route::get('/checkout', [\App\Http\Controllers\Users\CheckoutController::class, 'index'])->name('users.checkout');
-// Route::post('/product/{sort?}', [\App\Http\Controllers\Users\ProductController::class, 'sort'])->name('users.product.sort');
+Route::get('index', [\App\Http\Controllers\Users\HomeController::class, 'index'])->name('users.index');
+Route::get('product', [\App\Http\Controllers\Users\ProductController::class, 'index'])->name('users.product');
+Route::get('product/{category}', [\App\Http\Controllers\Users\ProductController::class, 'getByCategory'])->name('users.product.category');
+Route::get('product-detail/{slug}', [\App\Http\Controllers\Users\ProductController::class, 'detail'])->name('users.product.detail');
+Route::get('checkout', [\App\Http\Controllers\Users\CheckoutController::class, 'index'])->name('users.checkout');
+Route::post('comment', [\App\Http\Controllers\Users\ProductController::class, 'comment'])->name('users.product.comment');
 
 Route::get('cart', [\App\Http\Controllers\Users\OrderController::class, 'cart'])->name('users.cart');
 Route::post('add-to-cart', [\App\Http\Controllers\Users\OrderController::class, 'addToCart'])->name('users.add.cart');

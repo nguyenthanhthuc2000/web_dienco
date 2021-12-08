@@ -2034,7 +2034,10 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
-
+.comment-row{
+    border-bottom: 1px solid #ececec;
+    padding: 5px;
+}
 
 /* ##### The End ##### */
 

@@ -42,6 +42,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Repository\ActivityHistory\ActivityHistoryRepositoryInterface::class,
             \App\Repository\ActivityHistory\ActivityHistoryRepository::class
         );
+        
+        $this->app->singleton(
+            \App\Repository\Comment\CommentRepositoryInterface::class,
+            \App\Repository\Comment\CommentRepository::class
+        );
     }
 
     /**

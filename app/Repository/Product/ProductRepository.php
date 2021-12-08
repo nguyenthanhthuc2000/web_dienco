@@ -26,15 +26,4 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         }
         return $this->model->where($attributes)->where('status', 1)->orderBy($column, $order)->paginate();
     }
-//    public function scopeidProduct($query, $request)
-//    {
-//        return  $this->model->scopeId($query, $request);
-//    }
-//    public function scopeId($query, $request)
-//    {
-//        if ($request->has('id') && $request->id != '') {
-//            $query->where('id', $request->id);
-//        }
-//        return $query;
-//    }
 }
