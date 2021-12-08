@@ -1,4 +1,4 @@
-(function ($) {
+(function($) {
     'use strict';
 
     var $window = $(window);
@@ -9,7 +9,7 @@
     var singleProCata = ".single-products-catagory";
 
     if ($.fn.imagesLoaded) {
-        proCata.imagesLoaded(function () {
+        proCata.imagesLoaded(function() {
             proCata.isotope({
                 itemSelector: singleProCata,
                 percentPosition: true,
@@ -24,11 +24,11 @@
     var amadoSearch = $('.search-nav');
     var searchClose = $('.search-close');
 
-    amadoSearch.on('click', function () {
+    amadoSearch.on('click', function() {
         $('body').toggleClass('search-wrapper-on');
     });
 
-    searchClose.on('click', function () {
+    searchClose.on('click', function() {
         $('body').removeClass('search-wrapper-on');
     });
 
@@ -36,12 +36,23 @@
     var amadoMobNav = $('.amado-navbar-toggler');
     var navClose = $('.nav-close');
 
-    amadoMobNav.on('click', function () {
+    amadoMobNav.on('click', function() {
         $('.header-area').toggleClass('bp-xs-on');
     });
 
-    navClose.on('click', function () {
+    navClose.on('click', function() {
         $('.header-area').removeClass('bp-xs-on');
+    });
+
+    var amadoMobFilter = $('.product-topbar .filter');
+    var filterClose = $('.filter-close');
+
+    amadoMobFilter.on('click', function() {
+        $('.filter-bar').toggleClass('active');
+    });
+
+    filterClose.on('click', function() {
+        $('.filter-bar').removeClass('active');
     });
 
     // :: 3.0 ScrollUp Active Code
@@ -54,7 +65,7 @@
     }
 
     // :: 4.0 Sticky Active Code
-    $window.on('scroll', function () {
+    $window.on('scroll', function() {
         if ($window.scrollTop() > 0) {
             $('.header_area').addClass('sticky');
         } else {
@@ -90,12 +101,12 @@
     }
 
     // :: 10.0 PreventDefault a Click
-    $("a[href='#']").on('click', function ($) {
+    $("a[href='#']").on('click', function($) {
         $.preventDefault();
     });
 
     // :: 11.0 Slider Range Price Active Code
-    $('.slider-range-price').each(function () {
+    $('.slider-range-price').each(function() {
         var min = jQuery(this).data('min');
         var max = jQuery(this).data('max');
         var unit = jQuery(this).data('unit');
@@ -108,7 +119,7 @@
             min: min,
             max: max,
             values: [value_min, value_max],
-            slide: function (event, ui) {
+            slide: function(event, ui) {
                 var result = label_result + " " + unit + ui.values[0] + ' - ' + unit + ui.values[1];
                 console.log(t);
                 t.closest('.slider-range').find('.range-price').html(result);

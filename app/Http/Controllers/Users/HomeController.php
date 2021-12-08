@@ -21,12 +21,7 @@ class HomeController extends Controller
         $this->proRepo = $proRepo;
     }
     public function index(){
-        $listCategory = $this->cateRepo->getAllActive(); // lấy ra danh sách category
-        $lstMinPrice = [];
-        foreach($listCategory as $category){
-            $price = ($this->proRepo->getMinPriceByCategory($category->id)) ? $this->proRepo->getMinPriceByCategory($category->id) : '0'; //lấy giá nhỏ nhất của sản phẩm trong cùng 1 category 
-            array_push($lstMinPrice,['idCategory' => $category->id, 'minPrice' => $price]); //push vào mảng
-        }
-        return view('users.category.list_category', ['listCategory'=> $listCategory, 'minPrice' => $lstMinPrice]);
+        $listCategory = $this->cateRepo->getAllActive();
+        return view('users.category.list_category', ['listCategory'=> $listCategory]);
     }
 }

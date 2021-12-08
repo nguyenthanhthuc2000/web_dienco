@@ -7,7 +7,6 @@
     <!-- Product Details Area Start -->
     <div class="single-product-area section-padding-100 clearfix">
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-12 col-lg-7">
                     <div class="single_product_thumb">
@@ -109,7 +108,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                @if(!$listComments)
+                @if(count($listComments) == 0)
                     <div class="col-12 text-center">Chưa có đánh giá</div>
                 @else
                     @foreach($listComments as $comment)
