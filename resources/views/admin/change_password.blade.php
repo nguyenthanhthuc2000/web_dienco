@@ -1,4 +1,7 @@
 @extends('admin.layout.main')
+@section('title')
+    Thay đổi mật khẩu
+@endsection
 @section('content')
     @include('admin.layout.alert')
     <h1 class="h3 mb-3">Đổi mật khẩu</h1>

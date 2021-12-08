@@ -2025,6 +2025,16 @@ img {
     background-color: #f5f7fa;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 
 /* ##### The End ##### */
 

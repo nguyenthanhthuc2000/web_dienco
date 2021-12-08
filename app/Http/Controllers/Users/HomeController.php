@@ -21,7 +21,7 @@ class HomeController extends Controller
         $this->proRepo = $proRepo;
     }
     public function index(){
-        $listCategory = $this->cateRepo->get(); // lấy ra danh sách category
+        $listCategory = $this->cateRepo->getAllActive(); // lấy ra danh sách category
         $lstMinPrice = [];
         foreach($listCategory as $category){
             $price = ($this->proRepo->getMinPriceByCategory($category->id)) ? $this->proRepo->getMinPriceByCategory($category->id) : '0'; //lấy giá nhỏ nhất của sản phẩm trong cùng 1 category 

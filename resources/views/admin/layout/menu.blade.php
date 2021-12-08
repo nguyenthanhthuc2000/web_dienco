@@ -66,15 +66,5 @@
             </li>
 
         </ul>
-
-        <div class="sidebar-cta">
-            <div class="sidebar-cta-content">
-                <strong class="d-inline-block mb-2">Upgrade to Pro</strong>
-                <div class="mb-3 text-sm">
-                    Are you looking for more components?
-                </div>
-                <a href="#" target="_blank" class="btn btn-outline-primary btn-block">Upgrade</a>
-            </div>
-        </div>
     </div>
 </nav>

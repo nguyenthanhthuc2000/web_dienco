@@ -11,5 +11,11 @@ interface ProductRepositoryInterface extends RepositoryInterface
      */
     public function getMinPriceByCategory($category);
 
+    /**
+     * @param string $column
+     * @return mixed
+     */
+    public function getProductOrderByPrice($column, $order = 'desc', $attributes = [], $from = null, $to = null);
+
 //    public function scopeidProduct($query, $request);
 }

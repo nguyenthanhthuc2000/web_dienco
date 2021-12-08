@@ -1,4 +1,7 @@
 @extends('admin.layout.main')
+@section('title')
+    Lịch sử hoạt động của {{$user->name}}
+@endsection
 @section('content')
     @include('admin.layout.alert')
     <div class="header-page">

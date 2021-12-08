@@ -1,4 +1,7 @@
 @extends('admin.layout.main')
+@section('title')
+    Danh sách nhân viên
+@endsection
 @section('content')
     @include('admin.layout.alert')
     <div class="header-page">

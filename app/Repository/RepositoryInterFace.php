@@ -67,4 +67,6 @@ interface RepositoryInterface
      * @return mixed
      */
     public function getIdBySlug($slug);
+
+    public function getAllActive();
 }

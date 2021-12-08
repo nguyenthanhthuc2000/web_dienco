@@ -4,7 +4,7 @@
     <div class="mobile-nav">
         <!-- Navbar Brand -->
         <div class="amado-navbar-brand">
-            <a href="index.html"><img src="/for_users/img/core-img/logo.png" alt=""></a>
+            <a href="{{ route('users.index') }}"><img src="/for_users/img/core-img/logo.png" alt=""></a>
         </div>
         <!-- Navbar Toggler -->
         <div class="amado-navbar-toggler">
@@ -20,7 +20,7 @@
         </div>
         <!-- Logo -->
         <div class="logo">
-            <a href="index.html"><img src="/for_users/img/core-img/logo.png" alt=""></a>
+            <a href="{{ route('users.index') }}"><img src="/for_users/img/core-img/logo.png" alt=""></a>
         </div>
         <!-- Amado Nav -->
         <nav class="amado-nav">

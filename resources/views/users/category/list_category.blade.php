@@ -1,4 +1,7 @@
 @extends('users.layout.main')
+@section('title')
+    Trang chủ
+@endsection
 @section('content')
     <div class="products-catagories-area clearfix">
         <div class="amado-pro-catagory clearfix">

@@ -1,4 +1,7 @@
 @extends('admin.layout.main')
+@section('title')
+    Chi tiết hóa đơn
+@endsection
 @section('content')
     <div class="header-page">
     <h1 class="h3 mb-3">Chi tiết hóa đơn {{strtoupper($order->order_code)}} - {{$order->name}} - {{$order->phone}} </h1>

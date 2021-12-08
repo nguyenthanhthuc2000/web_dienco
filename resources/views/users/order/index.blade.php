@@ -1,4 +1,7 @@
 @extends('users.layout.main')
+@section('title')
+    Giỏ hàng
+@endsection
 @section('content')
 
     <div class="cart-table-area section-padding-100 ">
