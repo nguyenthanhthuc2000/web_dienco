@@ -1,4 +1,7 @@
 @extends('admin.layout.main')
+@section('title')
+    Chi tiết hóa đơn
+@endsection
 @section('content')
     <h1 class="h3 mb-3">Tables</h1>
     <div class="row">

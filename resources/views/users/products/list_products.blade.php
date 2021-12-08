@@ -1,11 +1,14 @@
 @extends('users.layout.main')
+@section('title')
+    Danh sách sản phẩm
+@endsection
 @section('content')
 <div class="shop_sidebar_area">
 
     <!-- ##### Single Widget ##### -->
     <div class="widget catagory mb-50">
         <!-- Widget Title -->
-        <h6 class="widget-title mb-30">Catagories</h6>
+        <h6 class="widget-title mb-30">Chuyên mục</h6>
 
         <!--  Catagories  -->
         <div class="catagories-menu">
@@ -18,9 +21,9 @@
     </div>
 
     <!-- ##### Single Widget ##### -->
-    <div class="widget price mb-50">
+    {{-- <div class="widget price mb-50">
         <!-- Widget Title -->
-        <h6 class="widget-title mb-30">Price</h6>
+        <h6 class="widget-title mb-2">Chọn khoản giá</h6>
 
         <div class="widget-desc">
             <div class="slider-range">
@@ -30,44 +33,56 @@
                     <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                 </div>
                 <div class="range-price">$10 - $1000</div>
+                <form action="{{ url()->current() }}" method="get">
+                    <div class="col-12 p-0 mb-2">
+                        <input type="number" class="form-control" id="voucher" min="0" placeholder="Từ" value="" name="from" required>
+                    </div>
+                    <div class="col-12 p-0">
+                        <input type="number" class="form-control" id="voucher" min="0" placeholder="Đến" value="" name="to" required>
+                    </div>
+                    <div class="col-12 p-0 text-right">
+                        <button type="submit" class="btn btn-success mt-3">Lọc</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 <div class="amado_product_area section-padding-100">
     <div class="container-fluid">
 
         <div class="row">
             <div class="col-12">
-                <div class="product-topbar d-xl-flex align-items-end justify-content-between">
+                <div class="product-topbar d-xl-flex align-items-end justify-content-end">
                     <!-- Total Products -->
-                    <div class="total-products">
+                    {{-- <div class="total-products">
                         <p>Hiển thị 1-6 trên 25 sản phẩm</p>
-                    </div>
+                    </div> --}}
                     <!-- Sorting -->
-                    <div class="product-sorting d-flex">
-                        <div class="sort-by-date d-flex align-items-center mr-15">
-                            <p>Sort by</p>
-                            <form action="#" method="get">
-                                <select name="select" id="sortBydate">
-                                    <option value="value">Date</option>
-                                    <option value="value">Newest</option>
-                                    <option value="value">Popular</option>
+                    <form action="{{ url()->current() }}" method="get">
+                        <div class="product-sorting d-flex justify-content-end">
+                                @csrf
+                            <div class="sort-by-date d-flex align-items-center justify-content-end">
+                                <p class="col-3 p-0 text-center">Chọn khoản giá </p>
+                                <div class="col-4">
+                                    <input type="number" class="form-control" id="voucher" min="0" placeholder="Từ" 
+                                    value="{{ (request()->get('from') != '') ? request()->get('from') : '' }}" name="from" required>
+                                </div>
+                                <div class="col-4">
+                                    <input type="number" class="form-control" id="voucher" min="0" placeholder="Đến"
+                                    value="{{ (request()->get('to') != '') ? request()->get('to') : '' }}" name="to" required>
+                                </div>
+                            </div>
+                            <div class="sort-by-date d-flex align-items-center mr-15">
+                                <p>Sắp xếp theo giá </p>
+                                <select name="sort" id="sortBydate">
+                                    <option value="up" {{ (request()->get('sort') == 'up') ? 'selected' : '' }}>Tăng dần</option>
+                                    <option value="down" {{ (request()->get('sort') == 'down') ? 'selected' : '' }}>Giảm dần</option>
                                 </select>
-                            </form>
+                                <button type="submit" class="btn btn-success ml-3">Lọc</button>
+                            </div>
                         </div>
-                        <div class="view-product d-flex align-items-center">
-                            <p>View</p>
-                            <form action="#" method="get">
-                                <select name="select" id="viewProduct">
-                                    <option value="value">12</option>
-                                    <option value="value">24</option>
-                                    <option value="value">48</option>
-                                    <option value="value">96</option>
-                                </select>
-                            </form>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -104,14 +119,15 @@
         <div class="row">
             <div class="col-12">
                 <!-- Pagination -->
-                <nav aria-label="navigation">
+                {{-- <nav aria-label="navigation">
                     <ul class="pagination justify-content-end mt-50">
                         <li class="page-item active"><a class="page-link" href="#">01.</a></li>
                         <li class="page-item"><a class="page-link" href="#">02.</a></li>
                         <li class="page-item"><a class="page-link" href="#">03.</a></li>
                         <li class="page-item"><a class="page-link" href="#">04.</a></li>
                     </ul>
-                </nav>
+                </nav> --}}
+                {{ $listProducts->links() }}
             </div>
         </div>
     </div>

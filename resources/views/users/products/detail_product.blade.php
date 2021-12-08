@@ -1,4 +1,7 @@
 @extends('users.layout.main')
+@section('title')
+    {{ $detailProduct['name'] }}
+@endsection
 @section('content')
 
     <!-- Product Details Area Start -->

@@ -1,4 +1,7 @@
 @extends('admin.layout.main')
+@section('title')
+    Tạo tài khoản
+@endsection
 @section('content')
     @include('admin.layout.alert')
     <h1 class="h3 mb-3">Tạo tài khoản</h1>

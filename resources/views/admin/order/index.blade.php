@@ -1,4 +1,7 @@
 @extends('admin.layout.main')
+@section('title')
+    Hóa đơn
+@endsection
 @section('content')
     <div class="header-page">
         <h1 class="h3 mb-3">Hóa đơn</h1>

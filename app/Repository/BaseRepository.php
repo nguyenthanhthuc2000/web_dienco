@@ -36,6 +36,11 @@ abstract class BaseRepository implements RepositoryInterface
         return $this->model->orderBy('id', 'DESC')->paginate();
     }
 
+    public function getAllActive()
+    {
+        return $this->model->where('status', 1)->orderBy('id', 'DESC')->paginate();
+    }
+
     public function getAllItem()
     {
         return $this->model->orderBy('id', 'DESC')->get();

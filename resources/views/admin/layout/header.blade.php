@@ -12,7 +12,9 @@
 
     <link rel="shortcut icon" href="/img/icons/icon-48x48.png" />
 
-    <title>Admin Shop</title>
+    <title>
+         @yield('title')
+    </title>
 
     <link href="/for_admin/css/app.css" rel="stylesheet">
     <link href="/for_admin/css/style.css" rel="stylesheet">

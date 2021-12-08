@@ -1,4 +1,7 @@
 @extends('admin.layout.main')
+@section('title')
+    Thêm sản phẩm mới
+@endsection
 @section('content')
     <form  method="post" action="{{ route('product.store') }}" enctype="multipart/form-data">
         @csrf

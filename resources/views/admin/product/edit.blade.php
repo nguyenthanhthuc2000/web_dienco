@@ -1,4 +1,7 @@
 @extends('admin.layout.main')
+@section('title')
+    Chỉnh sửa sản phẩm
+@endsection
 @section('content')
     <form  method="post" action="{{ route('product.update', $product->id) }}" enctype="multipart/form-data">
         @csrf

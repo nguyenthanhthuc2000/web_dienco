@@ -1,4 +1,7 @@
 @extends('users.layout.main')
+@section('title')
+    Thanh toán
+@endsection
 @section('content')
 <div class="cart-table-area section-padding-100">
     <form action="{{ route('users.store.order') }}" method="post">

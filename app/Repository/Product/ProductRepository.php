@@ -19,6 +19,13 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $row = $this->model->select('price')->where('category', $category)->min('price');
         return $row;
     }
+
+    public function getProductOrderByPrice($column, $order = 'desc', $attributes = [], $from = null, $to = null){
+        if($from != null && $to != null){
+            return $this->model->where($attributes)->where('status', 1)->whereBetween($column, [$from, $to])->orderBy($column, $order)->paginate();
+        }
+        return $this->model->where($attributes)->where('status', 1)->orderBy($column, $order)->paginate();
+    }
 //    public function scopeidProduct($query, $request)
 //    {
 //        return  $this->model->scopeId($query, $request);

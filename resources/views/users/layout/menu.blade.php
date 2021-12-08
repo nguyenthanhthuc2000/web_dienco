@@ -4,7 +4,7 @@
     <div class="mobile-nav">
         <!-- Navbar Brand -->
         <div class="amado-navbar-brand">
-            <a href="index.html"><img src="/for_users/img/core-img/logo.png" alt=""></a>
+            <a href="{{ route('users.index') }}"><img src="/for_users/img/core-img/logo.png" alt=""></a>
         </div>
         <!-- Navbar Toggler -->
         <div class="amado-navbar-toggler">
@@ -20,7 +20,7 @@
         </div>
         <!-- Logo -->
         <div class="logo">
-            <a href="index.html"><img src="/for_users/img/core-img/logo.png" alt=""></a>
+            <a href="{{ route('users.index') }}"><img src="/for_users/img/core-img/logo.png" alt=""></a>
         </div>
         <!-- Amado Nav -->
         <nav class="amado-nav">
@@ -39,7 +39,7 @@
         <!-- Cart Menu -->
         <div class="cart-fav-search mb-100">
             <a href="{{ route('users.cart') }}" class="cart-nav">
-                <img src="/for_users/img/core-img/cart.png" alt=""> Giỏ hàng <span>(@php echo count(Session::get('carts')) @endphp)</span>
+                <img src="/for_users/img/core-img/cart.png" alt=""> Giỏ hàng <span>(@if(Session::has('carts')) @php echo count(Session::get('carts')) @endphp @else {{ 0 }} @endif)</span>
             </a>
             {{-- <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>
             <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a> --}}
