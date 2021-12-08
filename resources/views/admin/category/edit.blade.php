@@ -20,6 +20,9 @@
                             @error('name')
                             <span class="error text-white" style="    font-size: small;font-size: small;    background: #33333333;">{{ $message }}</span>
                             @enderror
+                            @if(Session::has('nameExist'))
+                                <span class="error text-danger">{{ Session::get('nameExist') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label class="form-label">Đường dẩn</label>

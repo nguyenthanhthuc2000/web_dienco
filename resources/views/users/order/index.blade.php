@@ -92,6 +92,7 @@
                                         $reduce = ($total / 100) * $code[0]['discount_number'];
                                     }
                                     $total = $total - $reduce;
+                                    Session::put('reduce', $reduce);
 
                                 ?>
                                 <li><span>Giảm giá ( {{$code[0]['discount_code']}} )</span> <span>{{ number_format($reduce, 0, ',', '.') }}</span></li>

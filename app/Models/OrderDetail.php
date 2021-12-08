@@ -13,4 +13,12 @@ class OrderDetail extends Model
     protected $guarded = [];    // lưu được tất cả các trường trong db
     public $timestamps = true;
     protected $perPage = 5; // limit phân trang
+
+    public function product(){
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
+    public function discount_code(){
+        return $this->hasOne(DiscountCode::class, 'id', 'discount_code_id');
+    }
+
 }

@@ -102,8 +102,17 @@ class OrderController extends Controller
             $Order->total_money = $data['total'];
             $Order->save();
 
+            $content = ''; // tên sp/sl
+            $total = Session::get('total'); //put ngoài blade (trang giỏ hàng) // tong don hang
+            $reduce = 0; // tien giam
+            if(Session::has('reduce')){
+                $reduce = Session::get('reduce'); //put ngoài blade (trang giỏ hàng)
+            }
+
+
             foreach (Session::get('carts') as $key => $cart) {
                 $order_detail = new OrderDetail();
+                $product = Product::find($cart['product_id']);
                 $order_detail->order_code = $order_code;
                 $order_detail->product_id = $cart['product_id'];
                 $order_detail->quantily = $cart['product_qty'];
@@ -111,8 +120,28 @@ class OrderController extends Controller
                     $c = Session::get('discount_code');
                     $order_detail->discount_code_id = $c[0]['discount_id'];
                 }
+//                dd($total);
+                $content .= '<p>'.$cart['product_qty'].': '.$product->name. '</p>';
+
                 $order_detail->save();
             }
+
+            $title = 'Xác nhận đơn hàng của bạn từ SAIGONSHOP.ABC';
+            $email = $data['email'];
+            //gui mail
+            Mail::send('users.checkout.mail',
+                array(
+                    'content' => $content,
+                'total' => $total,
+                'reduce' => $reduce,
+                'name' => $data['name'],
+                'address' => $data['address']
+            ),
+                function ($message) use ($email, $title) {
+                $message->to($email, $title)->subject($title);
+            });
+
+
 
             Session::forget('discount_code');
             Session::forget('carts');

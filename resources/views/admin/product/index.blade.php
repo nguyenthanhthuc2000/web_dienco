@@ -48,7 +48,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Hình ảnh</th>
-                    <th class="text-center">Giá</th>
+                    <th class="text-center">Giá(VNĐ)</th>
                     <th class="text-center">Số lượng</th>
                     <th class="text-center">Đã bán</th>
                     <th>Trạng thái</th>
@@ -68,9 +68,9 @@
                                 <img src="{{asset('/images/noimage.png')}}" width="48" height="48" class=" mr-2" alt="img"> {{$product->name}}
                                 @endif
                             </td>
-                            <td class="text-center">{{$product->price}}</td>
-                            <td class="text-center">{{$product->remains}}</td>
-                            <td class="text-center">{{$product->quantity}}</td>
+                            <td class="text-center">{{ number_format($product->price,0,',','.')}}</td>
+                            <td class="text-center">{{ number_format($product->remains,0,',','.')}}</td>
+                            <td class="text-center">{{ number_format($product->quantity,0,',','.')}}</td>
                             <td>
                                 @if($product->status == 1)
                                     <a class="btn btn-success" href="{{ route('product.update.status', $product->id) }}">Hoạt động</a>

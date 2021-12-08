@@ -54,9 +54,9 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('order')->group(function () {
             Route::get('index', [\App\Http\Controllers\Admin\OrderController::class, 'index'])->name('order.index');
-            Route::get('detail/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'detail'])->name('order.detail');
+            Route::get('detail/{order_code}', [\App\Http\Controllers\Admin\OrderController::class, 'detail'])->name('order.detail');
             Route::get('delete/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'delete'])->name('order.delete')->middleware(CheckRole::class);
-            Route::get('update-status/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'updateStatus'])->name('order.update.status');
+            Route::post('update-status', [\App\Http\Controllers\Admin\OrderController::class, 'updateStatus'])->name('order.update.status');
         });
 
         //ma giam gia

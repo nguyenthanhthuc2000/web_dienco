@@ -16,6 +16,9 @@
                             <label class="form-label">Tên sản phẩm <span style="color: red;">*</span></label>
                             <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="name" value="{{$product->name}}"
                                    onkeyup="ChangeToSlug();" id="slug">
+                            @if(Session::has('nameExist'))
+                                <span class="error text-danger">{{ Session::get('nameExist') }}</span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label class="form-label">Slug <span style="color: red;">*</span></label>
