@@ -54,9 +54,6 @@
                             </tr>
                         @else
                             <tr>
-                                <td colspan="2">
-                                    <p>Tổng tiền:  {{ number_format( $total,0,',','.')}} vnđ</p>
-                                </td>
 
                                 <?php
                                     $code = $pro->discount_code;
@@ -68,14 +65,22 @@
                                     }
                                     $total = $total - $reduce;
                                 ?>
-                                <td colspan="2">
-                                    <p>Giảm giá ({{$code->code}}):  {{ number_format( $reduce,0,',','.')}} vnđ</p>
-                                </td>
-                                <td colspan="1" class="text-right">
-                                    <p>Tổng thanh toán:  {{ number_format( $total,0,',','.')}} vnđ</p>
+                                <td colspan="5" class="text-right">
+                                    <p>Tổng tiền:  {{ number_format( $total,0,',','.')}} vnđ</p>
                                 </td>
                             </tr>
                         @endif
+                    <tr>
+
+                        <td colspan="5"  class="text-right">
+                            <p>Giảm giá ({{$code->code}}):  {{ number_format( $reduce,0,',','.')}} vnđ</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="text-right">
+                            <p>Tổng thanh toán:  {{ number_format( $total,0,',','.')}} vnđ</p>
+                        </td>
+                    </tr>
                         <tr>
                             <td colspan="3">
                                 <p>Địa chỉ nhận hàng:  {{$order->address}}</p>
