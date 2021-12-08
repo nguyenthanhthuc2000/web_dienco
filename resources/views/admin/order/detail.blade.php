@@ -69,7 +69,6 @@
                                     <p>Tổng tiền:  {{ number_format( $total,0,',','.')}} vnđ</p>
                                 </td>
                             </tr>
-                        @endif
                     <tr>
 
                         <td colspan="5"  class="text-right">
@@ -81,6 +80,7 @@
                             <p>Tổng thanh toán:  {{ number_format( $total,0,',','.')}} vnđ</p>
                         </td>
                     </tr>
+                    @endif
                         <tr>
                             <td colspan="3">
                                 <p>Địa chỉ nhận hàng:  {{$order->address}}</p>
