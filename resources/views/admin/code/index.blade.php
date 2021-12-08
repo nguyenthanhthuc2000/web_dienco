@@ -21,8 +21,8 @@
                             <th>Code</th>
                             <th>Số lượng</th>
                             <th>Đã dùng</th>
-                            <th>Hình thức giảm</th>
                             <th>Giảm</th>
+                            <th>Hình thức giảm</th>
                             <th>Ngày bắt đầu</th>
                             <th>Ngày kết thúc</th>
                             <th>Trạng thái</th>
@@ -38,14 +38,14 @@
                                 <td>{{$code->code}}</td>
                                 <td>{{$code->total}}</td>
                                 <td>{{$code->used}}</td>
+                                <td>{{ number_format($code->number,0,',','.')}}</td>
                                 <td>
                                     @if($code->type == 1)
-                                        Phần trăm
+                                      %
                                     @else
-                                        Số tiền
+                                       VNĐ
                                     @endif
                                 </td>
-                                <td>{{$code->number}}</td>
                                 <td>{{$code->date_end}}</td>
                                 <td>{{$code->date_start}}</td>
                                 <td>

@@ -121,11 +121,21 @@ class OrderController extends Controller
                 if(Session::has('discount_code')){
                     $c = Session::get('discount_code');
                     $order_detail->discount_code_id = $c[0]['discount_id'];
+
                 }
 //                dd($total);
                 $content .= '<p>'.$cart['product_qty'].': '.$product->name. '</p>';
 
                 $order_detail->save();
+            }
+            //cap nhat lai sl ma giam gia
+            if(Session::has('discount_code')){
+                $discountCode = DiscountCode::find($c[0]['discount_id']);
+                $array = [
+                    'total' => $discountCode->total - 1,
+                    'used' => $discountCode->used + 1
+                ];
+                $discountCode->update($array);
             }
 
             $title = 'Xác nhận đơn hàng của bạn từ SAIGONSHOP.ABC';
