@@ -104,7 +104,11 @@
                 	method:'POST',
                 	data:{id:id,cart_product_qty:cart_product_qty},
                 	success:function(data){
-                		if(data==1){
+
+                	     const myObj = JSON.parse(JSON.stringify(data))
+                        x = myObj.total;
+                		if(x != null){
+                            $('.total-product').text(x);
                 			Swal.fire(
 							  'Thêm giỏ hàng thành công!',
 							  'Tiếp tục mua hàng!',
