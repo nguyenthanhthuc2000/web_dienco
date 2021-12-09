@@ -36,7 +36,10 @@ class OrderController extends Controller
                         'product_image' => $product->image,
                     );
                     Session::put('carts',$carts);
-                    return 1;
+                    $data = [
+                        'total' => count($carts)
+                    ];
+                    return response()->json($data);
                 }
             }
             if($is_avaiable == 0){
@@ -48,7 +51,11 @@ class OrderController extends Controller
                     'product_image' => $product->image,
                 );
                 Session::put('carts',$carts);
-                return 1;
+
+                $data = [
+                    'total' => count($carts)
+                ];
+                return response()->json($data);
             }
         }
         else{//neu chua ton tai thi tao cart session va add pro vao
@@ -60,7 +67,10 @@ class OrderController extends Controller
                 'product_image' => $product->image,
             );
             Session::put('carts',$carts);
-            return 1;
+            $data = [
+                'total' => count($carts)
+            ];
+            return response()->json($data);
         }
 
     }

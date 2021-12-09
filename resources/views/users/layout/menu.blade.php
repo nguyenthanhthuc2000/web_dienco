@@ -39,7 +39,7 @@
         <!-- Cart Menu -->
         <div class="cart-fav-search mb-100">
             <a href="{{ route('users.cart') }}" class="cart-nav">
-                <img src="/for_users/img/core-img/cart.png" alt=""> Giỏ hàng <span>(
+                <img src="/for_users/img/core-img/cart.png" alt=""> Giỏ hàng <span class="total-product">(
                     <?php
                         if(Session::has('carts')){
                             echo count(Session::get('carts'));
