@@ -140,7 +140,7 @@ class ProductController extends Controller
         $orderDetails = $this->orderDetailRepo->getByAttributesAll($attributes);
         $products = $this->proRepo->find($id);
         if($orderDetails->count() > 0){
-            return redirect()->route('product.index')->with('error', 'Tồn tại '.$orderDetails->count().' hóa đơn thuộc sản phẩm '.$products->name.', không thể xóa !');
+            return redirect()->route('product.index')->with('error', 'Đã bán '.$orderDetails->count().' sản phẩm '.$products->name.', không thể xóa !');
         }
         if($this->proRepo->delete($id)){
             return redirect()->route('product.index')->with('success', 'Xóa thành công!');
