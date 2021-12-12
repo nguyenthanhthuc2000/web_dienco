@@ -21,22 +21,25 @@
     }
 
     // :: 2.1 Search Active Code
-    var amadoSearch = $('.search-nav');
-    var searchClose = $('.search-close');
+    // var amadoSearch = $('.search-nav');
+    // var searchClose = $('.search-close');
 
-    amadoSearch.on('click', function() {
-        $('body').toggleClass('search-wrapper-on');
-    });
+    // amadoSearch.on('click', function() {
+    //     $('body').toggleClass('search-wrapper-on');
+    // });
 
-    searchClose.on('click', function() {
-        $('body').removeClass('search-wrapper-on');
-    });
+    // searchClose.on('click', function() {
+    //     $('body').removeClass('search-wrapper-on');
+    // });
 
     // :: 2.2 Mobile Nav Active Code
     var amadoMobNav = $('.amado-navbar-toggler');
     var navClose = $('.nav-close');
 
     amadoMobNav.on('click', function() {
+        if ($('.filter-bar').hasClass('active')) {
+            $('.filter-bar').removeClass('active')
+        };
         $('.header-area').toggleClass('bp-xs-on');
     });
 
@@ -48,6 +51,9 @@
     var filterClose = $('.filter-close');
 
     amadoMobFilter.on('click', function() {
+        if ($('.header-area').hasClass('bp-xs-on')) {
+            $('.header-area').removeClass('bp-xs-on')
+        };
         $('.filter-bar').toggleClass('active');
     });
 

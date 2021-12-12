@@ -1,4 +1,7 @@
 @extends('admin.layout.main')
+@section('title')
+Thêm mới mã giảm giá
+@endsection
 @section('content')
     <div class="header-page">
         <h1 class="h3 mb-3">Thêm mới mã giảm giá</h1>
