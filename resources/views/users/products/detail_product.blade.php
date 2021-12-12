@@ -51,7 +51,7 @@
                             </div>
                             <button type="button" value="5" class="btn amado-btn add-cart"
                                     data-id="{{$detailProduct['id']}}"
-                                    data-sl="{{$detailProduct['quantity']}}"
+                                    data-sl="{{$detailProduct['remains']}}"
                                     data-price="{{$detailProduct['price']}}"
                                     data-url="{{ route('users.add.cart') }}"
                             >Thêm vào giỏ hàng
@@ -92,7 +92,7 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                     <button type="submit" class="btn btn-primary">Gửi</button>
                 </div>
-                
+
             </form>
             </div>
         </div>

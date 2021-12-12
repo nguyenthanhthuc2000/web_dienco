@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="product-topbar d-flex justify-content-end">
-                    <img src="{{ asset('/for_users/img/core-img/filter.png') }}" width="30" height="30" class="filter">
+                    <img src="{{ asset('/for_users/img/core-img/filter.png') }}" width="30" height="30" class="filter"> Bộ lọc
                 </div>
             </div>
         </div>
@@ -56,6 +56,13 @@
                     </div>
                 </div>
             @endforeach
+            @if($listProducts->count() == 0)
+                <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                    <div class="single-product-wrapper">
+                        Không có dữ liệu
+                    </div>
+                </div>
+                @endif
         </div>
 
         <div class="row">
@@ -74,7 +81,7 @@
                 <div class="sort-by-date p-0">
                     <p class="p-0">Chọn khoản giá </p>
                     <div class="mb-2">
-                        <input type="number" class="form-control" id="voucher" min="0" placeholder="Từ" 
+                        <input type="number" class="form-control" id="voucher" min="0" placeholder="Từ"
                         value="{{ (request()->get('from') != '') ? request()->get('from') : '' }}" name="from" required>
                     </div>
                     <div class="mb-2">
