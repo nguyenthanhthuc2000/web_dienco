@@ -21,8 +21,8 @@ class CreateDiscountCode extends Migration
             $table->integer('type'); //1 giam theo %, 2 giảm theo số tiền / tổng hóa đơn
             $table->integer('total')->default(0); // còn lại
             $table->integer('used')->default(0); // Đã dùng
-            $table->date('date_end'); // ngày bắt đầu
-            $table->date('date_start');// ngày hết hạn
+//            $table->date('date_end'); // ngày bắt đầu
+//            $table->date('date_start');// ngày hết hạn
             $table->integer('status')->default(0);
             $table->timestamps();
         });

@@ -41,16 +41,19 @@
                         <div class="form-group">
                             <button type="submit" class="form-control btn btn-primary submit px-3">Đăng nhập</button>
                         </div>
+                        @if(Session::has('error'))
+                            <span class="error text-white">{{ Session::get('error') }}</span>
+                        @endif
                         <div class="form-group d-md-flex">
-                            <div class="w-50">
-                                <label class="checkbox-wrap checkbox-primary">Nhớ mật khẩu
-                                    <input type="checkbox" checked>
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="w-50 text-md-right">
-                                <a href="#" style="color: #fff">Quên mật khẩu</a>
-                            </div>
+{{--                            <div class="w-50">--}}
+{{--                                <label class="checkbox-wrap checkbox-primary">Nhớ mật khẩu--}}
+{{--                                    <input type="checkbox" checked>--}}
+{{--                                    <span class="checkmark"></span>--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                            <div class="w-50 text-md-right">--}}
+{{--                                <a href="#" style="color: #fff">Quên mật khẩu</a>--}}
+{{--                            </div>--}}
                         </div>
                     </form>
                 </div>

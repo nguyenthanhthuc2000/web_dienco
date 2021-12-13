@@ -66,9 +66,6 @@ class AdminController extends Controller
         }
         return back()->with('error', 'Sai mật khẩu hiện tại!');
 
-
-
-
     }
 
 
@@ -85,12 +82,16 @@ class AdminController extends Controller
                 'password.required' => 'Vui lòng nhập mật khẩu'
             ],
         );
-
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            if(Auth::user()->status == 0){
+                return back()->with([
+                    'error' => 'Tài khoản đã bị khóa',
+                 ]);
+            }
             return redirect()->route('admin.index');
         }
         return back()->with([
-            'password' => 'Tài khoản hoặc mật khẩu không chính xác',
+            'error' => 'Tài khoản hoặc mật khẩu không chính xác',
         ]);
     }
 

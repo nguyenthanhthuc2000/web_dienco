@@ -41,25 +41,25 @@ class DiscountCodeController extends Controller
                 'code' => [
                     "required",
                     "unique:App\Models\DiscountCode,code" // check xem code đã tồn tại chưa
-                ],
-                'date_end' => ['required'],
-                'date_start' => ['required'],
+                ]
+//                'date_end' => ['required'],
+//                'date_start' => ['required'],
             ],
             //trả lại thông báo ở giao diện phía dưới input // xem ở trang view/admin//add
             [
                 'name.required' => 'Vui lòng nhập tên',
                 'code.required' =>  'Vui lòng nhập code',
-                'code.unique' =>  'Code này đã tồn tại',
-                'date_end.required' =>  'Vui lòng ngày kết thúc',
-                'date_start.required' =>  'Vui lòng ngày bắt đầu',
+                'code.unique' =>  'Code này đã tồn tại'
+//                'date_end.required' =>  'Vui lòng ngày kết thúc',
+//                'date_start.required' =>  'Vui lòng ngày bắt đầu',
             ],
         );
 
         $array = [
             'name' => $request->name,
             'code' => $request->code,
-            'date_start' => $request->date_start,
-            'date_end' => $request->date_end,
+//            'date_start' => $request->date_start,
+//            'date_end' => $request->date_end,
             'number' => $request->number,
             'type' => $request->type,
             'status' => $request->status,
@@ -120,16 +120,16 @@ class DiscountCodeController extends Controller
             //required = Không được bỏ trống  https://laravel.com/docs/8.x/validation#rule-required
             [
                 'name' => ['required'],
-                'code' => ['required'],
-                'date_end' => ['required'],
-                'date_start' => ['required'],
+                'code' => ['required']
+//                'date_end' => ['required'],
+//                'date_start' => ['required'],
             ],
             //trả lại thông báo ở giao diện phía dưới input // xem ở trang view/admin//add
             [
                 'name.required' => 'Vui lòng nhập tên',
-                'code.required' =>  'Vui lòng nhập code',
-                'date_end.required' =>  'Vui lòng ngày kết thúc',
-                'date_start.required' =>  'Vui lòng ngày bắt đầu',
+                'code.required' =>  'Vui lòng nhập code'
+//                'date_end.required' =>  'Vui lòng ngày kết thúc',
+//                'date_start.required' =>  'Vui lòng ngày bắt đầu',
             ],
         );
 
@@ -142,8 +142,8 @@ class DiscountCodeController extends Controller
         $array = [
             'name' => $request->name,
             'code' => $request->code,
-            'date_start' => $request->date_start,
-            'date_end' => $request->date_end,
+//            'date_start' => $request->date_start,
+//            'date_end' => $request->date_end,
             'number' => $request->number,
             'type' => $request->type,
             'status' => $request->status,

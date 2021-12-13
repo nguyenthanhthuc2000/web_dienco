@@ -23,8 +23,8 @@
                             <th>Đã dùng</th>
                             <th>Giảm</th>
                             <th>Hình thức giảm</th>
-                            <th>Ngày bắt đầu</th>
-                            <th>Ngày kết thúc</th>
+{{--                            <th>Ngày bắt đầu</th>--}}
+{{--                            <th>Ngày kết thúc</th>--}}
                             <th>Trạng thái</th>
                             <th class="text-right">Thao tác</th>
                         </tr>
@@ -46,8 +46,8 @@
                                        VNĐ
                                     @endif
                                 </td>
-                                <td>{{$code->date_end}}</td>
-                                <td>{{$code->date_start}}</td>
+{{--                                <td>{{$code->date_end}}</td>--}}
+{{--                                <td>{{$code->date_start}}</td>--}}
                                 <td>
                                     @if($code->status == 1)
                                         <a class="btn btn-success" href="{{ route('code.update.status', $code->id) }}">Hoạt động</a>

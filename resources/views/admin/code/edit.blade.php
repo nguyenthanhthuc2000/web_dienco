@@ -64,26 +64,26 @@ hỉnh sửa mã giảm giá
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label class="form-label">Ngày bắt đầu <span style="color:red;">*</span></label>
-                                <input type="date" name="date_start" class="form-control"
-                                       value="{{old('date_start') ? old('date_start') : $code->date_start}}"
-                                >
-                                @error('date_start')
-                                <span class="error text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="form-label">Ngày kết thúc <span style="color:red;">*</span></label>
-                                <input type="date" name="date_end" class="form-control"
-                                       value="{{old('date_end') ? old('date_end') : $code->date_end}}"
-                                >
-                                @error('date_end')
-                                <span class="error text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+{{--                        <div class="form-row">--}}
+{{--                            <div class="form-group col-md-6">--}}
+{{--                                <label class="form-label">Ngày bắt đầu <span style="color:red;">*</span></label>--}}
+{{--                                <input type="date" name="date_start" class="form-control"--}}
+{{--                                       value="{{old('date_start') ? old('date_start') : $code->date_start}}"--}}
+{{--                                >--}}
+{{--                                @error('date_start')--}}
+{{--                                <span class="error text-danger">{{ $message }}</span>--}}
+{{--                                @enderror--}}
+{{--                            </div>--}}
+{{--                            <div class="form-group col-md-6">--}}
+{{--                                <label class="form-label">Ngày kết thúc <span style="color:red;">*</span></label>--}}
+{{--                                <input type="date" name="date_end" class="form-control"--}}
+{{--                                       value="{{old('date_end') ? old('date_end') : $code->date_end}}"--}}
+{{--                                >--}}
+{{--                                @error('date_end')--}}
+{{--                                <span class="error text-danger">{{ $message }}</span>--}}
+{{--                                @enderror--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputState">Hình thức giảm <span style="color:red;">*</span></label>
