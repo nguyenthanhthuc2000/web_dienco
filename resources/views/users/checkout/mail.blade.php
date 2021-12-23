@@ -18,6 +18,7 @@
     @else
     <p>Tổng: {{number_format($total,0,',','.')}} vnđ</p>
     @endif
+    <p>Mã hóa đơn: {{$order}}</p>
     <p>Địa chỉ nhận hàng: {{$address}}</p>
     <p>Nếu có vấn đề gì về hóa đơn của bạn, vui lòng liên hệ 033.3333.333 để được giải đáp</p>
     <p>Trân trọng cảm ơn!</p>

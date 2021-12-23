@@ -39,7 +39,7 @@
                     <div class="single-product-wrapper">
                         <!-- Product Image -->
                         <div class="product-img">
-                            <img src="{{ asset('upload/products/'.$product->image) }}" alt="">
+                            <a href="{{ route('users.product.detail', $product->slug) }}"><img src="{{ asset('upload/products/'.$product->image) }}" alt=""></a>
                         </div>
 
                         <!-- Product Description -->

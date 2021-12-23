@@ -39,6 +39,7 @@
 
                         <!-- Add to Cart Form -->
                         <form class="cart clearfix" method="post">
+                            @if($detailProduct['status'] == 1)
                             <div class="cart-btn d-flex mb-50">
                                 <p>Số lượng</p>
                                 <div class="quantity">
@@ -49,6 +50,7 @@
                                     <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
                                 </div>
                             </div>
+
                             <button type="button" value="5" class="btn amado-btn add-cart"
                                     data-id="{{$detailProduct['id']}}"
                                     data-sl="{{$detailProduct['remains']}}"
@@ -56,6 +58,11 @@
                                     data-url="{{ route('users.add.cart') }}"
                             >Thêm vào giỏ hàng
                             </button>
+                                @else
+                                <button type="button" value="5" class="btn amado-btn "
+                                >Sản phẩm đã ngừng kinh doanh
+                                </button>
+                                @endif
                         </form>
 
                     </div>

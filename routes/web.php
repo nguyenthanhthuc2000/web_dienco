@@ -59,6 +59,7 @@ Route::prefix('admin')->group(function () {
             Route::get('detail/{order_code}', [\App\Http\Controllers\Admin\OrderController::class, 'detail'])->name('order.detail');
             Route::get('delete/{id}', [\App\Http\Controllers\Admin\OrderController::class, 'delete'])->name('order.delete')->middleware(CheckRole::class);
             Route::post('update-status', [\App\Http\Controllers\Admin\OrderController::class, 'updateStatus'])->name('order.update.status');
+            Route::post('update-payment-status', [\App\Http\Controllers\Admin\OrderController::class, 'updatePaymentStatus'])->name('order.update.status.payment');
         });
 
         //ma giam gia

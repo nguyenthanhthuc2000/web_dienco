@@ -108,4 +108,20 @@ class OrderController extends Controller
         }
         return 0;
     }
+
+    public function updatePaymentStatus(Request $request){
+        $order = Order::find($request->id);
+        $order->payment_status = $request->status;
+        if($order->save()){
+
+            $arrayHistory = [
+                'user_id' => Auth::id(),
+                'action' => 'Cập nhật trạng thái thanh toán hóa đơn ID: '.$order->order_code.' thành: '.$request->txt_status
+            ];
+            $this->activityHistoryRepo->create($arrayHistory);
+
+            return 1;
+        }
+        return 0;
+    }
 }

@@ -93,7 +93,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="5">
+                            <td colspan="3">
                                 <form>
                                     <div class="form-group">
                                         <label for="inputState">Trạng thái <span style="color: red;">*</span></label>
@@ -125,6 +125,24 @@
                                     </div>
                                 </form>
                             </td>
+                            <td colspan="2">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="inputState">Thanh toán <span style="color: red;">*</span></label>
+                                        <select id="{{$order->id}}" class="form-control payment_status" name="payment_status"
+                                                data-url="{{ route('order.update.status.payment') }}"
+                                        >
+                                            @if($order->payment_status == 0)
+                                                <option value="0" selected="">Chưa thanh toán</option>
+                                                <option value="1">Đã thanh toán</option>
+                                            @elseif($order->payment_status == 1)
+                                                <option value="0" >Chưa thanh toán</option>
+                                                <option value="1" selected="">Đã thanh toán</option>
+                                            @endif
+                                        </select>
+                                    </div>
+                                </form>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -148,6 +166,39 @@
 				url: url,
 				method:'POST',
 				data:{status:status,id:id, txt_status:txt_status},
+				success:function(data){
+					if(data == 1){
+						Swal.fire(
+                          'Cập nhật',
+                          'Thành công',
+                          'success'
+                        )
+					}
+					else{
+					    Swal.fire(
+                          'Thất bại!',
+                          'Thử lại sau!',
+                          'error'
+                        )
+					}
+				}
+			})
+		})
+
+		$('.payment_status').change(function(){
+			const status = $(this).val();
+			const id = $(this).attr("id");
+			const url = $(this).data('url');
+            const txt_status = $( ".payment_status option:selected" ).text();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+			$.ajax({
+				url: url,
+				method:'POST',
+				data:{status:status, id:id, txt_status:txt_status},
 				success:function(data){
 					if(data == 1){
 						Swal.fire(

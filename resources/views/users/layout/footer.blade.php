@@ -10,31 +10,35 @@
                         <a href="{{ route('users.index') }}"><img src="/for_users/img/core-img/logo2.png" alt=""></a>
                     </div>
                     <!-- Copywrite Text -->
-                    <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> & Re-distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+{{--                    <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->--}}
+{{--                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> & Re-distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a>--}}
+{{--                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>--}}
                 </div>
             </div>
             <!-- Single Widget Area -->
             <div class="col-12 col-lg-8">
                 <div class="single_widget_area">
                     <!-- Footer Menu -->
+                    <br>
                     <div class="footer_menu">
                         <nav class="navbar navbar-expand-lg justify-content-end">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-                            <div class="collapse navbar-collapse" id="footerNavContent">
+{{--                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>--}}
+                            <div class=" navbar-collapse" id="footerNavContent">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="{{ route('users.index') }}">Home</a>
+                                        <a class="nav-link" href="{{ route('users.index') }}">Trang chủ</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('users.product') }}">Shop</a>
+                                        <a class="nav-link" href="{{ route('users.product') }}">Cửa hàng</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('users.cart') }}">Cart</a>
+                                        <a class="nav-link" href="{{ route('users.cart') }}">Giỏ hàng</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('users.checkout') }}">Checkout</a>
+                                        <a class="nav-link" href="{{ route('users.checkout') }}">Thanh toán</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://www.facebook.com/Tr%E1%BB%8Bnh-Tuy%E1%BA%BFt-Ng%C3%A2n-100475668476025/">Liên hệ</a>
                                     </li>
                                 </ul>
                             </div>

@@ -153,7 +153,8 @@ class OrderController extends Controller
             //gui mail
             Mail::send('users.checkout.mail',
                 array(
-                    'content' => $content,
+                'content' => $content,
+                'order' => $order_code,
                 'total' => $total,
                 'reduce' => $reduce,
                 'name' => $data['name'],
