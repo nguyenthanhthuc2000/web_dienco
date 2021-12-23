@@ -109,7 +109,7 @@
                 	data:{id:id,cart_product_qty:cart_product_qty},
                 	success:function(data){
 
-                	     const myObj = JSON.parse(JSON.stringify(data))
+                	    const myObj = JSON.parse(JSON.stringify(data))
                         x = myObj.total;
                 		if(x != null){
                             $('.total-product').text(x);
