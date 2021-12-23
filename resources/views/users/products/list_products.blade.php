@@ -47,7 +47,13 @@
                             <!-- Product Meta Data -->
                             <div class="product-meta-data">
                                 <div class="line"></div>
-                                <p class="product-price">{{ number_format($product->price, 0, ',', '.') }} VNĐ</p>
+                                <p class="product-price">
+                                    @if($product->price == 0)
+                                        Giá: liên hệ
+                                    @else
+                                    {{ number_format($product->price, 0, ',', '.') }} VNĐ
+                                    @endif
+                                </p>
                                 <a href="{{ route('users.product.detail', $product->slug) }}">
                                     <h6>{{ $product->name }}</h6>
                                 </a>
